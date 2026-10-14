@@ -8,5 +8,6 @@ next-env.d.ts
 .DS_Store
 
 # Reference downloads and raw sources: large, and other people's images; kept locally only
-design-archive/
+design-archive/*
+!design-archive/gemini_generated_video_*.mp4
 .claude/settings.local.json
