@@ -23,7 +23,7 @@ export function PortraitBand({ c, t, kicker }: { c: Concept; t: XTheme; kicker: 
     <section ref={ref} className="xt xt-band" data-seen={seen} style={vars(t)} aria-label={`${c.person}, portrait`}>
       <div className="xt-band-frame">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={c.photo.src} alt={c.person} />
+        <img loading="lazy" decoding="async" src={c.photo.src} alt={c.person} />
         <div aria-hidden className="xt-band-shade" />
         <div className="xt-band-copy">
           <p className="xt-label">{kicker}</p>
@@ -63,7 +63,7 @@ export function FilmStrip({ c, t, label }: { c: Concept; t: XTheme; label: strin
           {frames.map((f, i) => (
             <figure key={i}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.photo!.src} alt="" style={{ objectPosition: f.pos, transform: `scale(${f.s})`, transformOrigin: f.pos }} />
+              <img loading="lazy" decoding="async" src={c.photo!.src} alt="" style={{ objectPosition: f.pos, transform: `scale(${f.s})`, transformOrigin: f.pos }} />
               <span>{String((i % CROPS.length) + 1).padStart(2, "0")}</span>
             </figure>
           ))}

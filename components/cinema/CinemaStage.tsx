@@ -16,6 +16,12 @@ import { cinemaRange, stableVh } from "./viewport";
 /** Viewport-heights of scroll over which the home frames play (the hero plus the story beats). */
 export const CINEMA_RANGE = 3.2;
 
+/** Lets the opening screen know the first film frame is drawn, so it can lift. */
+function announce() {
+  (window as unknown as { __ruroFilm?: boolean }).__ruroFilm = true;
+  window.dispatchEvent(new Event("ruro:film-ready"));
+}
+
 export function CinemaStage() {
   const path = usePathname();
   const home = path === "/";
@@ -70,14 +76,14 @@ export function CinemaStage() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#f7f3eb]">
       <div ref={layer} className="absolute inset-[-3%]">
-        {useFrames ? <FrameCanvas key={portrait ? "p" : "l"} progress={progress} portrait={portrait} onFail={() => setFrames("failed")} onReady={() => setFrames("ok")} /> : null}
+        {useFrames ? <FrameCanvas key={portrait ? "p" : "l"} progress={progress} portrait={portrait} onFail={() => { setFrames("failed"); announce(); }} onReady={() => { setFrames("ok"); announce(); }} /> : null}
       </div>
       <div ref={veil} className="absolute inset-0 bg-[#f7f3eb]" style={{ opacity: 0.1 }} />
       {/* Over the film: a dark vignette and a dark band under the nav. Over white: a white one. */}
       <div ref={vigDark} className="absolute inset-0" style={{ opacity: 0 }}>
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.55)_100%)]" />
-        <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/60 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/65 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(0,0,0,0.36)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/45 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/50 to-transparent" />
       </div>
       <div ref={vigLight} className="absolute inset-0" style={{ opacity: 1 }}>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_45%,rgba(247,243,235,0.7)_100%)]" />

@@ -56,7 +56,7 @@ export default function JournalPage() {
       <section aria-labelledby="policy-title" className="relative overflow-hidden bg-royal text-paper">
         {/* the scales: nothing is published until it is weighed and agreed */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/art/myth/scales.webp" alt="" aria-hidden draggable={false} className="jr-float pointer-events-none absolute bottom-0 right-[3%] hidden h-[88%] w-auto opacity-90 mix-blend-screen md:block" style={{ "--fa": "6px" } as React.CSSProperties} />
+        <img loading="lazy" decoding="async" src="/art/myth/scales.webp" alt="" aria-hidden draggable={false} className="jr-float pointer-events-none absolute bottom-0 right-[3%] hidden h-[88%] w-auto opacity-90 mix-blend-screen md:block" style={{ "--fa": "6px" } as React.CSSProperties} />
         <div className="container-ed relative z-10 grid grid-cols-1 gap-8 py-16 md:grid-cols-12 md:py-24">
           <h2 id="policy-title" className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-[#e6c27a] md:col-span-3">
             Our discretion policy

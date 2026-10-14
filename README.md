@@ -75,11 +75,11 @@ Deploy to Vercel (zero config) or any Node host with `npm run build && npm start
 
 ## Home scene: a clip, split into frames
 
-The home page plays a 10-second clip as you scroll, in two cuts of the same story: a **landscape** cut (1280x720) for laptops and big screens, and a **portrait** cut (720x1280) for phones and tablets held upright. Each is stored as 120 still frames: `public/frames/l_001.webp` … `l_120.webp` (landscape) and `p_001.webp` … `p_120.webp` (portrait). The canvas (`components/cinema/FrameCanvas.tsx`) draws them by scroll position and picks the cut by screen shape (`CinemaStage.tsx`), switching if the device is turned. Timing is `CINEMA_RANGE` in `CinemaStage.tsx`. To change a clip, extract new frames (keep the names and count, or update `FRAME_COUNT`):
+The home page plays a 10-second clip as you scroll, in two cuts of the same story: a **landscape** cut (1280x720) for laptops and big screens, and a **portrait** cut (540x960) for phones and tablets held upright. Each is stored as 240 still frames, one for every frame of the 24 fps clip: `public/frames/l_001.webp` … `l_240.webp` (landscape, 1280x720) and `p_001.webp` … `p_240.webp` (portrait, 540x960). One sharp frame is drawn at a time; neighbouring frames are not blended, because that ghosts the text. The canvas (`components/cinema/FrameCanvas.tsx`) draws them by scroll position and picks the cut by screen shape (`CinemaStage.tsx`), switching if the device is turned. Timing is `CINEMA_RANGE` in `CinemaStage.tsx`. To change a clip, extract new frames (keep the names and count, or update `FRAME_COUNT`):
 
 ```bash
-ffmpeg -i landscape.mp4 -vf "select='not(mod(n,2))',scale=1280:720" -vsync vfr -c:v libwebp -quality 66 public/frames/l_%03d.webp
-ffmpeg -i portrait.mp4  -vf "select='not(mod(n,2))',scale=720:1280" -vsync vfr -c:v libwebp -quality 66 public/frames/p_%03d.webp
+ffmpeg -i landscape.mp4 -vf "scale=1280:720:flags=lanczos" -vsync vfr -c:v libwebp -quality 72 public/frames/l_%03d.webp
+ffmpeg -i portrait.mp4  -vf "scale=540:960:flags=lanczos"  -vsync vfr -c:v libwebp -quality 74 public/frames/p_%03d.webp
 ```
 
 The story captions that play over the frames are in `components/sections/StoryScrub.tsx`. The loading screen image is `public/loader/ruro.jpg`.

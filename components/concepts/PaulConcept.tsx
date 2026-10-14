@@ -112,7 +112,7 @@ export function PaulConcept({ c }: { c: Concept }) {
           {c.photo && (
             <figure className="pg-sticker">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.photo.src} alt="Paul Graham" />
+              <img loading="lazy" decoding="async" src={c.photo.src} alt="Paul Graham" />
               <figcaption>Paul Graham</figcaption>
             </figure>
           )}

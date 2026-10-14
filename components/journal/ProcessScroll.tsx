@@ -119,7 +119,7 @@ function Figure({ p, src, side, from, to }: { p: MotionValue<number>; src: strin
       style={{ opacity: op, x: useTransform(x, (v) => `${v}vw`) }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="" draggable={false} className="jr-float h-full w-auto object-contain object-bottom drop-shadow-[0_24px_24px_rgba(0,0,0,0.55)]" style={{ "--fa": "6px" } as React.CSSProperties} />
+      <img loading="lazy" decoding="async" src={src} alt="" draggable={false} className="jr-float h-full w-auto object-contain object-bottom drop-shadow-[0_24px_24px_rgba(0,0,0,0.55)]" style={{ "--fa": "6px" } as React.CSSProperties} />
     </motion.div>
   );
 }
@@ -131,7 +131,7 @@ function Sun({ p }: { p: MotionValue<number> }) {
   return (
     <motion.div aria-hidden className="pointer-events-none absolute left-1/2 top-[48%] z-0 -translate-x-1/2 -translate-y-1/2" style={{ opacity: op, scale }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/art/myth/gold-sun.webp" alt="" draggable={false} className="sun-turn size-[min(78vw,64svh)] object-contain" />
+      <img loading="lazy" decoding="async" src="/art/myth/gold-sun.webp" alt="" draggable={false} className="sun-turn size-[min(78vw,64svh)] object-contain" />
     </motion.div>
   );
 }

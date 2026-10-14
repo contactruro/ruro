@@ -146,7 +146,7 @@ export function JamesConcept({ c }: { c: Concept }) {
           {c.photo && (
             <figure className="jh-photo">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.photo.src} alt="James Clear on stage" />
+              <img loading="lazy" decoding="async" src={c.photo.src} alt="James Clear on stage" />
               <figcaption>James Clear, speaking</figcaption>
             </figure>
           )}

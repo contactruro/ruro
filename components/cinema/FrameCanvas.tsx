@@ -5,12 +5,12 @@ import { useEffect, useRef } from "react";
 /* The home scene: a clip split into frames, drawn on a canvas by scroll. Two cuts of the same story: a landscape one
    (public/frames/l_001.webp ...) for laptops and big screens, and a portrait one (p_001.webp ...) for phones and
    tablets held upright. The cut is chosen by the screen's shape and swaps if the device is turned.
-   `progress` (0 to 1) is set by the cinematic layer. The frames load coarse to fine (every 12th first), so scrubbing works at
-   once and the rest fill in behind. The drawn position eases toward its target by elapsed time, and neighbouring
-   frames are blended, so scrolling feels continuous rather than stepped. If the first frame fails to load, `onFail` is called and the layer falls back to its built-in
+   `progress` (0 to 1) is set by the cinematic layer. The frames load coarse to fine (every 24th first), so scrubbing works at
+   once and the rest fill in behind. The drawn position eases toward its target by elapsed time, and one sharp frame is shown at a time (24 a second,
+   so scrolling reads as continuous). If the first frame fails to load, `onFail` is called and the layer falls back to its built-in
    scene. Frames are made with ffmpeg; see the README. */
 
-export const FRAME_COUNT = 120;
+export const FRAME_COUNT = 240;
 export const frameSrc = (i: number, portrait: boolean) => `/frames/${portrait ? "p" : "l"}_${String(i + 1).padStart(3, "0")}.webp`;
 
 export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress: React.MutableRefObject<number>; portrait: boolean; onFail: () => void; onReady: () => void }) {
@@ -49,16 +49,12 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
       ctx.globalAlpha = alpha;
       ctx.drawImage(im, (cw - w) / 2, (ch - h) / 2, w, h);
     };
-    // The clip has 12 frames a second, which on its own looks like stepping. So between two neighbouring frames the
-    // next one is faded in by the fraction of the way scroll has got to it: motion reads as continuous.
+    // Every frame of the clip (24 a second) is used and exactly one is drawn, sharp and whole. Blending neighbours was
+    // tried and ghosts the text while the camera moves, so it is not done.
     const draw = () => {
-      const i0 = Math.floor(cur);
-      const f = cur - i0;
-      const a = nearest(i0);
-      if (!a) return;
-      const b = f > 0.03 ? nearest(Math.min(FRAME_COUNT - 1, i0 + 1)) : null;
-      paint(a, 1);
-      if (b && b !== a) paint(b, f);
+      const im = nearest(Math.round(cur));
+      if (!im) return;
+      paint(im, 1);
       ctx.globalAlpha = 1;
     };
     let lastW = 0;
@@ -83,7 +79,7 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
       const dt = Math.min(64, last ? now - last : 16);
       last = now;
       target = progress.current * (FRAME_COUNT - 1);
-      cur += (target - cur) * (reduce ? 1 : 1 - Math.exp(-dt / 85));
+      cur += (target - cur) * (reduce ? 1 : 1 - Math.exp(-dt / 70));
       if (Math.abs(target - cur) < 0.01) cur = target;
       draw();
       if (cur !== target) raf = requestAnimationFrame(loop);
@@ -93,15 +89,17 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
       if (!raf && !dead) raf = requestAnimationFrame(loop);
     };
 
-    const load = (i: number) =>
+    const load = (i: number, low = false) =>
       new Promise<void>((res) => {
         if (imgs[i] || dead) return res();
         const im = new Image();
         im.decoding = "async";
+        im.fetchPriority = low ? "low" : "high";
         im.onload = async () => {
           // Decode now, off the scroll path, so the first draw of a frame never stalls.
+          // (Never wait long: decoding can stall while a tab is not painting, and the rest of the frames queue behind this.)
           try {
-            await im.decode();
+            await Promise.race([im.decode(), new Promise((r) => setTimeout(r, 250))]);
           } catch {}
           imgs[i] = im;
           if (!ready) {
@@ -118,15 +116,31 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
         im.src = frameSrc(i, portrait);
       });
 
+    // Hold the bulk of the frames back until the page itself has loaded and the browser is idle, so they never fight
+    // the page's own images for bandwidth.
+    const whenQuiet = () =>
+      new Promise<void>((res) => {
+        const idle = () => {
+          const w = window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void };
+          if (w.requestIdleCallback) w.requestIdleCallback(() => res(), { timeout: 3000 });
+          else setTimeout(res, 1200);
+        };
+        if (document.readyState === "complete") idle();
+        else window.addEventListener("load", idle, { once: true });
+      });
+
     (async () => {
-      // Coarse to fine: every 12th frame first, then every 6th, 3rd and the rest, a few at a time, so there is
-      // always a frame close to wherever the visitor has scrolled to.
-      for (const step of [12, 6, 3, 1]) {
+      // The very first frame alone and at top priority: it is what the opening screen waits for. Then coarse to fine:
+      // every 24th frame, then every 8th, 4th, 2nd and the rest, a few at a time, so there is always a frame close to
+      // wherever the visitor has scrolled to.
+      await load(0);
+      for (const step of [24, 8, 4, 2, 1]) {
         const batch: number[] = [];
         for (let i = 0; i < FRAME_COUNT; i += step) if (!imgs[i]) batch.push(i);
         if (batch.length === 0) continue;
         batch.push(FRAME_COUNT - 1);
-        for (let j = 0; j < batch.length && !dead; j += 6) await Promise.all(batch.slice(j, j + 6).map(load));
+        if (step < 24) await whenQuiet();
+        for (let j = 0; j < batch.length && !dead; j += 4) await Promise.all(batch.slice(j, j + 4).map((i) => load(i, step < 24)));
       }
     })();
 

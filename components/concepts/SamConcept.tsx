@@ -83,7 +83,7 @@ export function SamConcept({ c }: { c: Concept }) {
             Hi, I am Sam
             {c.photo && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={c.photo.src} alt="Sam Altman" className="sm-face" />
+              <img loading="lazy" decoding="async" src={c.photo.src} alt="Sam Altman" className="sm-face" />
             )}
             <br />A <Pill note="CEO of OpenAI. Before that, president of Y Combinator.">builder</Pill> who writes about{" "}
             <Pill note="The idea behind ‘The Intelligence Age’: intelligence as an abundant resource.">abundance</Pill> and what comes next.

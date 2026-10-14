@@ -6,10 +6,10 @@ export function TallPillar({ className = "", flip = false }: { className?: strin
   return (
     <div aria-hidden className={`pillar-sway flex flex-col ${flip ? "-scale-x-100" : ""} ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/art/myth/pillar-top.webp" alt="" draggable={false} className="block w-full" />
+      <img loading="lazy" decoding="async" src="/art/myth/pillar-top.webp" alt="" draggable={false} className="block w-full" />
       <div className="min-h-0 flex-1" style={{ backgroundImage: "url(/art/myth/pillar-shaft.webp)", backgroundRepeat: "repeat-y", backgroundSize: "100% auto" }} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/art/myth/pillar-base.webp" alt="" draggable={false} className="block w-full" />
+      <img loading="lazy" decoding="async" src="/art/myth/pillar-base.webp" alt="" draggable={false} className="block w-full" />
     </div>
   );
 }

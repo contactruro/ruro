@@ -88,7 +88,7 @@ export function NikhilConcept({ c }: { c: Concept }) {
           <figure className="nk-frame">
             {c.photo && (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={c.photo.src} alt="Nikhil Kamath" />
+              <img loading="lazy" decoding="async" src={c.photo.src} alt="Nikhil Kamath" />
             )}
             <figcaption>
               <b>NIKHIL KAMATH</b>

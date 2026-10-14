@@ -386,9 +386,9 @@ export function Engagement() {
           <div id="step-panel" role="region" aria-live="polite" aria-label={`Step ${stage.n}: ${stage.title}`} className="mt-8 grid gap-4 md:grid-cols-5 xl:grid-cols-12 xl:gap-5">
             <div key={`fig-${i}`} aria-hidden className="relative h-80 overflow-hidden border-2 border-[#e6c27a]/60 bg-[radial-gradient(ellipse_at_50%_30%,#2e4163,#17233b_70%)] md:col-span-2 md:h-auto md:min-h-[30rem] xl:col-span-3 xl:min-h-[36rem]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/art/myth/clouds-a.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-6%] w-[120%] opacity-50 cloud-feather" />
+              <img loading="lazy" decoding="async" src="/art/myth/clouds-a.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-6%] w-[120%] opacity-50 cloud-feather" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 src={FIGURES[i]}
                 alt=""
                 draggable={false}
@@ -473,9 +473,9 @@ export function Engagement() {
           <div className="mt-8 grid gap-5 lg:grid-cols-12 lg:gap-8">
             <div aria-hidden className="relative h-[26rem] overflow-hidden border-2 border-royal bg-[radial-gradient(ellipse_at_50%_30%,#2e4163,#17233b_72%)] sm:h-96 lg:col-span-5 lg:h-auto lg:min-h-[40rem]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/art/myth/clouds-b.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-8%] w-[120%] opacity-50 cloud-feather" />
+              <img loading="lazy" decoding="async" src="/art/myth/clouds-b.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-8%] w-[120%] opacity-50 cloud-feather" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <img loading="lazy" decoding="async"
                 key={ring}
                 src={KEEP_FIGURES[ring]}
                 alt=""
