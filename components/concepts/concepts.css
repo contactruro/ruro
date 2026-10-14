@@ -1,0 +1,65 @@
+/* Bespoke concept sites for the showcase (Nikhil Kamath, Sam Altman, James Clear).
+   Each renders inside a scroll frame and sizes its type in container-query units (cqw), so it
+   behaves like a real site at any frame width. All motion stops under reduced motion. */
+
+.cx {
+  container-type: inline-size;
+  position: relative;
+  height: var(--cx-h, 46rem);
+  max-height: 80svh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  --hand: var(--font-hand), "Caveat", "Segoe Print", cursive;
+}
+.cx-scroll {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+.cx .hand { font-family: var(--hand); font-weight: 600; }
+.cx button { font: inherit; color: inherit; cursor: pointer; }
+
+/* ═══════════════ SAM · after parosayshi.com: warm paper, one sentence, leaf-shadow ═══════════════ */
+.sm { background: #f5f3ee; color: #1a1a18; --moss: #3b6b4a; }
+.sm-light { position: absolute; top: 0; left: 0; width: 100%; height: 78cqw; fill: #5d5a52; opacity: 0.26; mix-blend-mode: multiply; pointer-events: none; transform-origin: 30% 0; animation: sm-sway 16s ease-in-out infinite alternate; -webkit-mask-image: linear-gradient(#000 35%, transparent 95%); mask-image: linear-gradient(#000 35%, transparent 95%); }
+@keyframes sm-sway { from { transform: translate(-1.2%, 0) rotate(-0.8deg) scale(1.02); } to { transform: translate(1.4%, -1%) rotate(0.9deg) scale(1.07); } }
+.sm-top { position: relative; display: flex; justify-content: space-between; padding: 3cqw 6cqw; font-size: clamp(0.72rem, 1.7cqw, 0.9rem); }
+.sm-top .r { border-bottom: 1px solid currentColor; }
+
+.sm-hero { position: relative; max-width: min(40rem, 78cqw); margin: 0 auto; padding: 13cqw 0 6cqw; }
+.sm-hero h1 { font-size: clamp(1.3rem, 3.5cqw, 2.1rem); font-weight: 400; line-height: 1.5; letter-spacing: -0.015em; text-wrap: pretty; }
+.sm-face { display: inline-block; width: 1.05em; height: 1.45em; margin-left: 0.3em; vertical-align: middle; border-radius: 0.3em; object-fit: cover; object-position: 50% 20%; transform: rotate(-5deg); transform-origin: 20% 80%; box-shadow: 0 1px 0 rgba(0, 0, 0, 0.12); transition: transform 0.6s cubic-bezier(0.32, 0.72, 0, 1), box-shadow 0.6s; position: relative; }
+.sm-face:hover { z-index: 3; transform: rotate(0) scale(3.2) translateY(-8%); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25); }
+.sm-pill { position: relative; display: inline-block; padding: 0.02em 0.5em; border: 0; border-radius: 0.7em; background: rgba(26, 26, 24, 0.075); color: inherit; font: inherit; line-height: inherit; transition: background 0.4s; }
+.sm-pill:hover, .sm-pill[aria-expanded="true"] { background: rgba(59, 107, 74, 0.2); }
+.sm-tip { position: absolute; left: 50%; bottom: calc(100% + 0.5rem); z-index: 4; width: 15rem; padding: 0.6rem 0.8rem; border-radius: 0.6rem; background: #1a1a18; color: #f5f3ee; font-size: 0.8rem; font-weight: 400; line-height: 1.4; letter-spacing: 0; text-align: left; opacity: 0; transform: translate(-50%, 4px); pointer-events: none; transition: opacity 0.3s, transform 0.3s; }
+.sm-pill:hover .sm-tip, .sm-pill:focus-visible .sm-tip, .sm-tip[data-open="true"] { opacity: 1; transform: translate(-50%, 0); }
+.sm-hero p { margin-top: 1.6rem; font-size: clamp(0.88rem, 1.7cqw, 1.05rem); line-height: 1.65; color: #5f5c54; }
+.sm-sig { position: relative; width: fit-content; margin-top: 2.4rem; font-family: var(--hand); font-size: clamp(2rem, 6.5cqw, 3.4rem); font-weight: 600; line-height: 1; transform: rotate(-4deg); clip-path: inset(-10% 100% -10% 0); transition: clip-path 1.8s cubic-bezier(0.45, 0, 0.2, 1) 0.2s; }
+.sm-sig[data-seen="true"] { clip-path: inset(-10% -10% -10% 0); }
+.sm-sig i { display: block; height: 0.14em; margin-top: 0.05em; border-bottom: 2px solid #1a1a18; border-radius: 0 0 50% 50% / 0 0 100% 100%; }
+
+.sm-label { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: #6a675f; }
+.sm-writing, .sm-resume { position: relative; max-width: min(40rem, 78cqw); margin: 0 auto; padding: 4cqw 0 5cqw; }
+.sm-writing > div { margin-top: 1.2rem; display: grid; gap: 0.9rem; }
+.sm-card { display: grid; gap: 0.35rem; padding: 1.3rem 1.4rem; border: 1px solid #dedad0; border-radius: 1.1rem; background: rgba(255, 255, 255, 0.55); opacity: 0; transform: translateY(12px); transition: opacity 0.8s cubic-bezier(0.32, 0.72, 0, 1), transform 0.8s cubic-bezier(0.32, 0.72, 0, 1), background 0.4s, box-shadow 0.4s; }
+.sm-card[data-seen="true"] { opacity: 1; transform: none; }
+.sm-card:hover { background: #fff; box-shadow: 0 10px 30px -14px rgba(26, 26, 24, 0.3); transform: translateY(-2px); }
+.sm-card .tag { width: fit-content; padding: 0.1rem 0.6rem; border-radius: 999px; background: rgba(59, 107, 74, 0.14); color: #2f5a3d; font-size: 0.7rem; }
+.sm-card .t { font-size: clamp(1.1rem, 2.6cqw, 1.5rem); font-weight: 500; letter-spacing: -0.02em; }
+.sm-card .d { font-size: 0.88rem; color: #6a675f; }
+.sm-resume ul { margin-top: 1rem; }
+.sm-resume li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.9rem 0; border-top: 1px solid #dedad0; }
+.sm-resume b { display: block; font-weight: 500; }
+.sm-resume em { display: block; margin-top: 0.15rem; font-style: normal; font-size: 0.85rem; color: #6a675f; }
+.sm-resume .y { font-family: var(--font-mono); font-size: 0.72rem; color: #6a675f; white-space: nowrap; padding-top: 0.2rem; }
+
+.sm-foot { position: relative; overflow: hidden; padding: 6cqw 6cqw 3cqw; text-align: center; }
+.sm-foot b { display: block; font-size: clamp(3.4rem, 21cqw, 14rem); font-weight: 700; line-height: 0.8; letter-spacing: -0.05em; color: rgba(26, 26, 24, 0.07); }
+.sm-foot p { margin-top: -1.2rem; font-family: var(--hand); font-size: clamp(1.4rem, 3.4cqw, 2rem); font-weight: 600; }
+.sm-foot span { display: flex; justify-content: center; gap: 1.4rem; margin-top: 0.8rem; font-size: 0.8rem; color: #5f5c54; }
+.sm-foot span i { font-style: normal; border-bottom: 1px solid currentColor; }
+.sm-foot small { display: block; margin-top: 2.4rem; font-family: var(--font-mono); font-size: 0.68rem; color: #8a8678; }
