@@ -36,8 +36,13 @@ export function CinemaStage() {
     const mq = window.matchMedia("(max-aspect-ratio: 1/1)");
     const f = () => setPortrait(mq.matches);
     f();
-    mq.addEventListener("change", f);
-    return () => mq.removeEventListener("change", f);
+    // Older browsers (some smart TVs) only have the legacy addListener on a media query.
+    if (mq.addEventListener) mq.addEventListener("change", f);
+    else mq.addListener(f);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", f);
+      else mq.removeListener(f);
+    };
   }, []);
   const [frames, setFrames] = useState<"loading" | "ok" | "failed">("loading");
   const useFrames = home && frames !== "failed";

@@ -77,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <style>{".preloader{display:none}"}</style>
         </noscript>
       </head>
-      <body className="grain min-h-dvh">
+      <body className="grain min-h-screen min-h-dvh">
         {/* Returning visits skip the opening screen with no flash. */}
         <Script id="pre-skip" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: "try{if(sessionStorage.getItem('ruro-pre')){document.documentElement.classList.add('pre-skip','pre-done')}}catch(e){}" }} />
         <Preloader />

@@ -115,7 +115,7 @@ function Figure({ p, src, side, from, to }: { p: MotionValue<number>; src: strin
   return (
     <motion.div
       aria-hidden
-      className={`pointer-events-none absolute bottom-[24%] z-[1] hidden h-[46svh] md:block ${side === "l" ? "left-[2%]" : "right-[2%]"}`}
+      className={`pointer-events-none absolute bottom-[24%] z-[1] hidden fig-h md:block ${side === "l" ? "left-[2%]" : "right-[2%]"}`}
       style={{ opacity: op, x: useTransform(x, (v) => `${v}vw`) }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -131,7 +131,7 @@ function Sun({ p }: { p: MotionValue<number> }) {
   return (
     <motion.div aria-hidden className="pointer-events-none absolute left-1/2 top-[48%] z-0 -translate-x-1/2 -translate-y-1/2" style={{ opacity: op, scale }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src="/art/myth/gold-sun.webp" alt="" draggable={false} className="sun-turn size-[min(78vw,64svh)] object-contain" />
+      <img loading="lazy" decoding="async" src="/art/myth/gold-sun.webp" alt="" draggable={false} className="sun-turn sun-size object-contain" />
     </motion.div>
   );
 }
@@ -168,8 +168,13 @@ export function ProcessScroll() {
     const mq = window.matchMedia("(max-width: 767px)");
     const f = () => setNarrow(mq.matches);
     f();
-    mq.addEventListener("change", f);
-    return () => mq.removeEventListener("change", f);
+    // Older browsers (some smart TVs) only have the legacy addListener on a media query.
+    if (mq.addEventListener) mq.addEventListener("change", f);
+    else mq.addListener(f);
+    return () => {
+      if (mq.removeEventListener) mq.removeEventListener("change", f);
+      else mq.removeListener(f);
+    };
   }, []);
 
   useMotionValueEvent(p, "change", (v) => {
@@ -200,7 +205,7 @@ export function ProcessScroll() {
 
   return (
     <section ref={ref} aria-labelledby="process-title" className="relative h-[520vh]">
-      <motion.div className="sticky top-0 h-svh overflow-hidden text-[#f5efe3]" style={{ backgroundColor: bg }}>
+      <motion.div className="sticky top-0 h-stage overflow-hidden text-[#f5efe3]" style={{ backgroundColor: bg }}>
         {/* the site's glitter, on its own layer so this element can stay sticky */}
         <div aria-hidden className="sparkle pointer-events-none" style={{ position: "absolute", inset: 0 }} />
         <h2 id="process-title" className="sr-only">

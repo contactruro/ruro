@@ -54,7 +54,7 @@ export function StoryScrub() {
 
   return (
     <section aria-label="The story" data-beat={beat} className="relative" style={{ height: `${range * 100}vh` }}>
-      <div className="sticky top-0 flex h-svh items-end">
+      <div className="sticky top-0 flex h-stage items-end">
         <div className="container-ed w-full pb-16 md:pb-24">
           <AnimatePresence mode="wait">
             {beat >= 0 && beat < 3 && (

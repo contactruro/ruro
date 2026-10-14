@@ -11,7 +11,7 @@ const WHO: [string, string][] = [["Founders", "#ebd9b5"], ["Executives", "#ebd9b
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" data-nav-dark className="hero-on-dark relative flex min-h-svh flex-col justify-end">
+    <section aria-labelledby="hero-title" data-nav-dark className="hero-on-dark relative flex min-h-stage flex-col justify-end">
       <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/55 via-black/20 to-transparent" />
       <div className="container-ed pb-10 pt-32 md:pb-14">
         <div className="rise-in flex flex-wrap items-center gap-x-4 gap-y-2" style={{ "--d": "0.05s" } as CSSProperties}>

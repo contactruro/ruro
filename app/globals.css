@@ -352,3 +352,10 @@ html[data-calm] .cloud-rise { animation-play-state: paused; }
 .pillar-sway.-scale-x-100 { animation-name: pillar-sway-flip; }
 @keyframes pillar-sway-flip { 0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); } 50% { transform: scaleX(-1) translateY(-10px) rotate(-0.5deg); } }
 @media (prefers-reduced-motion: reduce) { .pillar-sway { animation: none; } }
+
+/* Full-screen sizes with a plain-vh fallback. `svh` is not understood by older browsers (many smart-TV ones), and a
+   stage whose height is then invalid collapses to nothing, so each rule names `vh` first and `svh` after it. */
+.h-stage { height: 100vh; height: 100svh; }
+.min-h-stage { min-height: 100vh; min-height: 100svh; }
+.fig-h { height: 46vh; height: 46svh; }
+.sun-size { width: min(78vw, 64vh); height: min(78vw, 64vh); width: min(78vw, 64svh); height: min(78vw, 64svh); }

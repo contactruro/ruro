@@ -6,6 +6,7 @@
   container-type: inline-size;
   position: relative;
   height: var(--cx-h, 46rem);
+  max-height: 80vh;
   max-height: 80svh;
   overflow: hidden;
   font-family: var(--font-sans);
