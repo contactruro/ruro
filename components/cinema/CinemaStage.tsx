@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { FrameCanvas } from "./FrameCanvas";
+import { cinemaRange, stableVh } from "./viewport";
 
 /* The cinematic layer behind the whole site, as on the reference portfolio: one full-screen scene that is
    crisp at the top of the home page and scrubbed by scroll, then softened and blurred as the sections scroll
@@ -31,12 +32,15 @@ export function CinemaStage() {
     let raf = 0;
     const update = () => {
       raf = 0;
-      const vh = window.innerHeight;
+      const vh = stableVh();
+      const range = cinemaRange();
       const y = window.scrollY;
-      const p = home ? Math.min(1, Math.max(0, y / (vh * CINEMA_RANGE))) : 0.6;
+      const p = home ? Math.min(1, Math.max(0, y / (vh * range))) : 0.6;
       progress.current = p;
-      const away = useFrames ? Math.min(1, Math.max(0, (y - vh * (CINEMA_RANGE - 0.3)) / (vh * 0.9))) : 1;
-      if (layer.current) layer.current.style.filter = useFrames ? `blur(${away * 16}px)` : "";
+      const away = useFrames ? Math.min(1, Math.max(0, (y - vh * (range - 0.3)) / (vh * 0.9))) : 1;
+      // A blurred full-screen layer is the costliest thing on a phone: soften less there, and not at all until it matters.
+      const blur = window.innerWidth < 768 ? 8 : 16;
+      if (layer.current) layer.current.style.filter = useFrames && away > 0.02 ? `blur(${(away * blur).toFixed(1)}px)` : "";
       if (veil.current) veil.current.style.opacity = useFrames ? String(away) : "0.1";
       if (vigDark.current) vigDark.current.style.opacity = useFrames ? String(1 - away) : "0";
       if (vigLight.current) vigLight.current.style.opacity = useFrames ? String(away) : "1";
@@ -56,7 +60,7 @@ export function CinemaStage() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#f7f3eb]">
-      <div ref={layer} className="absolute inset-[-3%] will-change-[filter]">
+      <div ref={layer} className="absolute inset-[-3%]">
         {useFrames ? <FrameCanvas progress={progress} onFail={() => setFrames("failed")} onReady={() => setFrames("ok")} /> : null}
       </div>
       <div ref={veil} className="absolute inset-0 bg-[#f7f3eb]" style={{ opacity: 0.1 }} />

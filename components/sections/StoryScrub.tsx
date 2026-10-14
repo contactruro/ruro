@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { CINEMA_RANGE } from "../cinema/CinemaStage";
+import { cinemaRange, stableVh } from "../cinema/viewport";
 
 /* The story that plays as the page is scrolled. A tall, empty section keeps the scene (the frames behind the
    page) on screen while these captions change, one for each beat of the clip: building the company, earning the
@@ -20,9 +21,16 @@ export function StoryScrub() {
   const reduce = useReducedMotion();
   const { scrollY } = useScroll();
   const [beat, setBeat] = useState(-1);
+  const [range, setRange] = useState(CINEMA_RANGE);
+  useEffect(() => {
+    const f = () => setRange(cinemaRange());
+    f();
+    window.addEventListener("resize", f);
+    return () => window.removeEventListener("resize", f);
+  }, []);
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    const p = y / (window.innerHeight * CINEMA_RANGE);
+    const p = y / (stableVh() * cinemaRange());
     let b = -1;
     beats.forEach((x, i) => {
       if (p >= x.at) b = i;
@@ -45,7 +53,7 @@ export function StoryScrub() {
   }
 
   return (
-    <section aria-label="The story" data-beat={beat} className="relative" style={{ height: `${CINEMA_RANGE * 100}vh` }}>
+    <section aria-label="The story" data-beat={beat} className="relative" style={{ height: `${range * 100}vh` }}>
       <div className="sticky top-0 flex h-svh items-end">
         <div className="container-ed w-full pb-16 md:pb-24">
           <AnimatePresence mode="wait">

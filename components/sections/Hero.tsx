@@ -22,7 +22,7 @@ export function Hero() {
           <span className="font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-white/70">Digital identity studio · for founders and executives</span>
         </div>
 
-        <h1 id="hero-title" className="mt-8 text-[clamp(3.4rem,9.4vw,9.5rem)] leading-[0.92] tracking-[-0.035em]">
+        <h1 id="hero-title" className="mt-6 md:mt-8 text-[clamp(2.7rem,9.4vw,9.5rem)] leading-[0.94] tracking-[-0.035em]">
           <span className="mask-rise block overflow-hidden pb-[0.06em]">
             <span className="block font-light" style={{ "--d": "0.1s" } as CSSProperties}>
               Your story
@@ -41,7 +41,7 @@ export function Hero() {
           </span>
         </h1>
 
-        <p className="rise-in mt-8 max-w-xl text-lg leading-relaxed text-ink/80 md:text-xl" style={{ "--d": "0.5s" } as CSSProperties}>
+        <p className="rise-in mt-6 max-w-xl text-base leading-relaxed text-ink/80 md:mt-8 md:text-xl" style={{ "--d": "0.5s" } as CSSProperties}>
           RURO builds your personal website. We interview you, write your story, and keep it up to date. So when people search your name, they find the real you.
         </p>
 
