@@ -67,12 +67,12 @@ export function Studio({ kicker = "03 · The studio" }: { kicker?: string }) {
                     <li key={v.name} className="grid gap-1 border-b border-ink/15 py-4 sm:grid-cols-[7rem_1fr] sm:gap-4">
                       <div>
                         <p className="display text-2xl leading-none text-royal">{v.name}</p>
-                        <p className="mt-1.5 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink/65">{v.role}</p>
+                        <p className="mt-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink/65">{v.role}</p>
                       </div>
                       <div>
                         <p className="text-[0.9375rem] leading-snug text-ink/80">{v.text}</p>
                         {v.url && (
-                          <a href={v.url} target="_blank" rel="noopener noreferrer" className="link-underline mt-2 inline-flex items-center gap-1 font-mono text-[0.75rem] tracking-[0.04em] text-royal">
+                          <a href={v.url} target="_blank" rel="noopener noreferrer" className="link-underline -mb-1 mt-1 inline-flex min-h-9 items-center gap-1 font-mono text-[0.75rem] tracking-[0.04em] text-royal">
                             {v.url.replace(/^https?:\/\//, "")} <span aria-hidden>↗</span>
                             <span className="sr-only">(opens in a new tab)</span>
                           </a>

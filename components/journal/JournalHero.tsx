@@ -35,7 +35,7 @@ function Medallion({ m, i }: { m: Medal; i: number }) {
       >
         <m.Icon weight="fill" aria-hidden className="size-7 sm:size-9" />
       </span>
-      <span className="mt-2 font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-ink/80 sm:text-[0.625rem]">{m.name}</span>
+      <span className="mt-2 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/80 sm:text-[0.6875rem]">{m.name}</span>
       <span className="text-[0.6875rem] leading-tight text-ink/60">{m.note}</span>
     </motion.div>
   );
@@ -99,7 +99,7 @@ export function JournalHero({ count }: { count: number }) {
               <span className="grid size-14 place-items-center rounded-full bg-[#fffcf6] shadow-md ring-2 ring-[#e6c27a] ring-offset-2 ring-offset-[#fffcf6]" style={{ color: m.color }}>
                 <m.Icon weight="fill" className="size-7" />
               </span>
-              <span className="mt-2 font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-ink/80">{m.name}</span>
+              <span className="mt-2 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/80">{m.name}</span>
               <span className="text-[0.6875rem] leading-tight text-ink/60">{m.note}</span>
             </div>
           ))}

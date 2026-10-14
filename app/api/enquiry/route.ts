@@ -20,14 +20,49 @@ export async function POST(req: Request) {
   const enquiry = {
     name: body.name!.trim(),
     email: body.email!.trim(),
+    phone: `${(body.dialCode || "").trim()} ${body.phone!.replace(/[^\d]/g, "")}`.trim(),
     role: body.role!.trim(),
     company: body.company?.trim() || "",
     link: body.link?.trim() || "",
-    represent: body.represent!.trim(),
-    context: body.context?.trim() || "",
-    audit: !!body.audit,
+    business: body.business!.trim(),
+    service: body.service!.trim(),
     receivedAt: new Date().toISOString(),
   };
+
+  // Google Form: GOOGLE_FORM_URL is the form's ".../formResponse" address and GOOGLE_FORM_FIELDS maps each enquiry
+  // field to its entry id, e.g. {"name":"entry.123","email":"entry.456"}. Google answers with a redirect, so any
+  // response under 400 counts as received.
+  const formUrl = process.env.GOOGLE_FORM_URL;
+  let formFields: Record<string, string> = {};
+  try {
+    formFields = JSON.parse(process.env.GOOGLE_FORM_FIELDS || "{}");
+  } catch {
+    console.error("[enquiry] GOOGLE_FORM_FIELDS is not valid JSON");
+  }
+  let delivered = false;
+  if (formUrl && Object.keys(formFields).length) {
+    const params = new URLSearchParams();
+    for (const [key, entry] of Object.entries(formFields)) {
+      const value = (enquiry as Record<string, unknown>)[key];
+      if (value !== undefined && value !== "") params.set(entry, String(value));
+    }
+    try {
+      const res = await fetch(formUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params,
+        redirect: "manual",
+      });
+      if (res.status >= 400) throw new Error(`Google Form responded ${res.status}`);
+      delivered = true;
+    } catch (err) {
+      console.error("[enquiry] Google Form delivery failed", err);
+      return NextResponse.json(
+        { ok: false, message: "Your enquiry could not be delivered just now. Please try again, or email us directly." },
+        { status: 502 },
+      );
+    }
+  }
 
   const webhook = process.env.ENQUIRY_WEBHOOK_URL;
   if (webhook) {
@@ -45,7 +80,7 @@ export async function POST(req: Request) {
         { status: 502 },
       );
     }
-  } else {
+  } else if (!delivered) {
     console.info("[enquiry] received (no ENQUIRY_WEBHOOK_URL configured)", { ...enquiry, email: "[redacted]" });
   }
 

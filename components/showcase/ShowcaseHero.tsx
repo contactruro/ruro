@@ -139,10 +139,10 @@ export function ShowcaseHero() {
                       <img src={c.photo.src} alt="" className="absolute inset-0 size-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105" />
                     )}
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
-                    <span className="absolute left-3 top-3 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-white/80">0{i + 1}</span>
+                    <span className="absolute left-3 top-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-white/80">0{i + 1}</span>
                     <span className="absolute inset-x-3 bottom-3 text-white">
                       <span className="display block text-xl leading-tight md:text-2xl">{c.person}</span>
-                      <span className="mt-0.5 block font-mono text-[0.625rem] uppercase tracking-[0.12em] text-white/75">{c.design?.name}</span>
+                      <span className="mt-0.5 block font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-white/75">{c.design?.name}</span>
                       <span className="mt-2 flex gap-1" aria-hidden>
                         {c.dna?.palette.map((q) => (
                           <i key={q.hex} className="size-2.5 rounded-full ring-1 ring-white/40" style={{ background: q.hex }} />

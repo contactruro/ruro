@@ -49,7 +49,7 @@ export function LayerFigure({ index }: { index: number }) {
             {f.chips.map((c, i) => (
               <span
                 key={c}
-                className="whitespace-nowrap rounded-full border border-[#e6c27a]/70 bg-[#101a2e]/85 px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-[#f3e6c4] backdrop-blur-sm md:text-[0.6875rem]"
+                className="whitespace-nowrap rounded-full border border-[#e6c27a]/70 bg-[#101a2e]/85 px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[#f3e6c4] backdrop-blur-sm md:text-[0.6875rem]"
                 style={{ animation: reduce ? undefined : `chip-in 0.5s cubic-bezier(0.23,1,0.32,1) ${0.25 + i * 0.1}s both` }}
               >
                 {c}

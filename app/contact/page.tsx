@@ -89,8 +89,14 @@ export default async function ContactPage({ searchParams }: { searchParams: Prom
           </ol>
           <p className="mt-10 text-sm text-ink/70">
             Prefer email?{" "}
-            <a href={`mailto:${site.email}`} className="link-underline text-ink">
+            <a href={`mailto:${site.email}`} className="link-underline inline-block py-2 text-ink">
               {site.email}
+            </a>
+            <span className="mx-2 text-ink/40" aria-hidden>
+              ·
+            </span>
+            <a href={`mailto:${site.emailAlt}`} className="link-underline inline-block py-2 text-ink">
+              {site.emailAlt}
             </a>
           </p>
         </div>

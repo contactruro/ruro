@@ -46,7 +46,7 @@ export function HomeJourney({ className = "", variant = "walk" }: { className?: 
           initial={false}
           animate={{ opacity: lit, y: lit ? 0 : 8 }}
           transition={{ duration: 0.6 }}
-          className="absolute left-1/2 -top-[7%] -translate-x-1/2 whitespace-nowrap rounded-full bg-royal px-3 py-1 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-paper"
+          className="absolute left-1/2 -top-[7%] -translate-x-1/2 whitespace-nowrap rounded-full bg-royal px-3 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-paper"
         >
           Your home
         </motion.span>
@@ -65,7 +65,7 @@ export function HomeJourney({ className = "", variant = "walk" }: { className?: 
           draggable={false}
           className={`h-full w-full ${pair.flip ? "-scale-x-100" : ""} object-contain object-bottom drop-shadow-[0_22px_18px_rgba(155,17,30,0.3)]`}
         />
-        <span className="absolute -top-[9%] left-[10%] rounded-full bg-paper px-2.5 py-1 font-mono text-[0.5625rem] uppercase tracking-[0.16em] text-royal shadow-sm ring-1 ring-royal/25 md:text-[0.625rem]">
+        <span className="absolute -top-[9%] left-[10%] rounded-full bg-paper px-2.5 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-royal shadow-sm ring-1 ring-royal/25 md:text-[0.6875rem]">
           Your story
         </span>
       </motion.div>

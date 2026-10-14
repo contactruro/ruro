@@ -37,7 +37,7 @@ export function FieldNotes() {
           ))}
         </div>
 
-        <Link href="/work" className="group mt-12 inline-flex items-center gap-2 font-semibold text-accent">
+        <Link href="/work" className="group mt-10 inline-flex min-h-11 items-center gap-2 font-semibold text-accent">
           <span className="link-underline">Read all {studies.length} studies</span>
           <ArrowRight aria-hidden className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
         </Link>

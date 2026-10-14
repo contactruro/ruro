@@ -59,7 +59,7 @@ function Identity({ still }: { still: boolean }) {
         className="rounded-md border border-current px-6 py-5 text-center"
       >
         <p className="display text-3xl leading-none md:text-4xl">Your Name</p>
-        <p className="mt-3 font-mono text-[0.625rem] tracking-[0.3em]">FOUNDER · AUTHOR · INVESTOR</p>
+        <p className="mt-3 font-mono text-[0.6875rem] tracking-[0.3em]">FOUNDER · AUTHOR · INVESTOR</p>
         <motion.p
           initial={still ? false : { opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ function Story({ still }: { still: boolean }) {
         >
           <span className="absolute size-3.5 -translate-y-1/2 rounded-full border-2 border-current bg-current" />
           <span
-            className={`absolute whitespace-nowrap rounded-none border border-current/40 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] ${
+            className={`absolute whitespace-nowrap rounded-none border border-current/40 px-2.5 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${
               b.up ? "-translate-y-[calc(100%+1.1rem)]" : "translate-y-[1.1rem]"
             }`}
           >
@@ -116,7 +116,7 @@ function Story({ still }: { still: boolean }) {
         transition={{ duration: 3, ease: "easeInOut", delay: 0.2 }}
       />
       <motion.span
-        className="absolute bottom-6 left-8 font-mono text-[0.625rem] tracking-[0.2em]"
+        className="absolute bottom-6 left-8 font-mono text-[0.6875rem] tracking-[0.2em]"
         initial={still ? false : { opacity: 0 }}
         animate={{ opacity: 0.7 }}
         transition={{ delay: still ? 0 : 3.6 }}
@@ -155,7 +155,7 @@ function Work({ still }: { still: boolean }) {
                   transition={{ delay: still ? 0 : 2.4 + i * 0.05, duration: 0.6 }}
                 />
                 <motion.span
-                  className="relative font-mono text-[0.625rem] uppercase tracking-[0.12em]"
+                  className="relative font-mono text-[0.6875rem] uppercase tracking-[0.12em]"
                   initial={still ? false : { opacity: 0, y: 6 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: still ? 0 : 2.8 + i * 0.05, duration: 0.5 }}
@@ -181,7 +181,7 @@ function Proof({ still }: { still: boolean }) {
         {badges.map((b, i) => (
           <motion.span
             key={b}
-            className="rounded-md border border-current px-2.5 py-1.5 font-mono text-[0.625rem] uppercase tracking-[0.12em]"
+            className="rounded-md border border-current px-2.5 py-1.5 font-mono text-[0.6875rem] uppercase tracking-[0.12em]"
             initial={still ? false : { y: -60, opacity: 0, rotate: i % 2 ? 8 : -8 }}
             animate={{ y: 0, opacity: 1, rotate: 0 }}
             transition={{ type: "spring", stiffness: 180, damping: 13, delay: still ? 0 : 0.2 + i * 0.25 }}
@@ -205,10 +205,10 @@ function Proof({ still }: { still: boolean }) {
             </motion.span>
           ))}
         </p>
-        <p className="mt-2 pl-6 font-mono text-[0.625rem] uppercase tracking-[0.14em] opacity-70">— Illustrative source</p>
+        <p className="mt-2 pl-6 font-mono text-[0.6875rem] uppercase tracking-[0.14em] opacity-70">— Illustrative source</p>
       </div>
       <motion.span
-        className="w-fit rounded-none border-2 border-current px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.16em]"
+        className="w-fit rounded-none border-2 border-current px-3 py-1 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.16em]"
         initial={still ? false : { scale: 1.8, opacity: 0, rotate: -12 }}
         animate={{ scale: 1, opacity: 1, rotate: -4 }}
         transition={{ type: "spring", stiffness: 260, damping: 14, delay: still ? 0 : 3 }}
@@ -268,10 +268,10 @@ function Media({ still }: { still: boolean }) {
               />
             )}
             <span className="relative flex items-center gap-2">
-              <span className="font-mono text-[0.625rem] uppercase tracking-[0.12em] opacity-70">{kind}</span>
+              <span className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] opacity-70">{kind}</span>
               <span className="font-semibold">{title}</span>
             </span>
-            <span className="relative font-mono text-[0.625rem] opacity-70">{dur}</span>
+            <span className="relative font-mono text-[0.6875rem] opacity-70">{dur}</span>
           </motion.li>
         ))}
       </ul>
@@ -305,7 +305,7 @@ function Journal({ still }: { still: boolean }) {
           ))}
         </div>
         <motion.span
-          className="absolute -right-3 -top-3 rounded-none border-2 border-current bg-current/10 px-3 py-1 font-mono text-[0.625rem] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm"
+          className="absolute -right-3 -top-3 rounded-none border-2 border-current bg-current/10 px-3 py-1 font-mono text-[0.6875rem] font-semibold uppercase tracking-[0.16em] backdrop-blur-sm"
           initial={still ? false : { scale: 1.8, opacity: 0, rotate: 14 }}
           animate={{ scale: 1, opacity: 1, rotate: 6 }}
           transition={{ type: "spring", stiffness: 260, damping: 14, delay: still ? 0 : 3.3 }}

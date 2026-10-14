@@ -24,6 +24,15 @@ export function CinemaStage() {
   const layer = useRef<HTMLDivElement>(null);
   const vigDark = useRef<HTMLDivElement>(null);
   const vigLight = useRef<HTMLDivElement>(null);
+  // Which cut of the film to play: the portrait one when the screen is taller than it is wide.
+  const [portrait, setPortrait] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-aspect-ratio: 1/1)");
+    const f = () => setPortrait(mq.matches);
+    f();
+    mq.addEventListener("change", f);
+    return () => mq.removeEventListener("change", f);
+  }, []);
   const [frames, setFrames] = useState<"loading" | "ok" | "failed">("loading");
   const useFrames = home && frames !== "failed";
 
@@ -61,7 +70,7 @@ export function CinemaStage() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#f7f3eb]">
       <div ref={layer} className="absolute inset-[-3%]">
-        {useFrames ? <FrameCanvas progress={progress} onFail={() => setFrames("failed")} onReady={() => setFrames("ok")} /> : null}
+        {useFrames ? <FrameCanvas key={portrait ? "p" : "l"} progress={progress} portrait={portrait} onFail={() => setFrames("failed")} onReady={() => setFrames("ok")} /> : null}
       </div>
       <div ref={veil} className="absolute inset-0 bg-[#f7f3eb]" style={{ opacity: 0.1 }} />
       {/* Over the film: a dark vignette and a dark band under the nav. Over white: a white one. */}

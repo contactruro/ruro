@@ -112,7 +112,7 @@ export function ShowcaseProcess() {
           </motion.li>
         ))}
       </ol>
-      <p className="relative z-10 mt-2 text-center font-mono text-[0.625rem] uppercase tracking-[0.2em] text-[#e6c27a]/70 lg:hidden">Swipe →</p>
+      <p className="relative z-10 mt-2 text-center font-mono text-[0.6875rem] uppercase tracking-[0.2em] text-[#e6c27a]/70 lg:hidden">Swipe →</p>
     </section>
   );
 }

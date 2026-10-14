@@ -62,7 +62,7 @@ function ResultCard({ p, i, k }: { p: MotionValue<number>; i: number; k: number 
         filter: useTransform([gray, blur], ([g, b]) => `grayscale(${g}) blur(${b}px)`),
       }}
     >
-      <p className="flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink/70">
+      <p className="flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink/70">
         <c.Icon weight="fill" aria-hidden className="size-4" style={{ color: c.color }} />
         {c.t}
       </p>
@@ -86,7 +86,7 @@ function EstateCard({ p }: { p: MotionValue<number> }) {
       className="absolute left-1/2 top-1/2 w-[min(23rem,86vw)] -translate-x-1/2 -translate-y-1/2 border-2 border-[#e6c27a] bg-[#fbf6e8] p-5 text-ink"
       style={{ scale, opacity: op, y: useTransform(y, (v) => `${v}vh`), boxShadow: useTransform(glow, (g) => `0 0 0 ${g * 10}px rgba(168,32,45,${g * 0.12}), 0 30px 60px -28px rgba(20,22,43,0.55)`) }}
     >
-      <p className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-accent">The first result · primary source</p>
+      <p className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-accent">The first result · primary source</p>
       <p className="display mt-2 text-3xl">yourname.com</p>
       <p className="mt-1 text-sm text-ink/70">Stated with care, in your order.</p>
       <div className="mt-4 grid grid-cols-4 gap-1.5">
@@ -101,7 +101,7 @@ function EstateCard({ p }: { p: MotionValue<number> }) {
 function Chip({ p, i, label }: { p: MotionValue<number>; i: number; label: string }) {
   const on = kf(p, [0.78 + i * 0.035, 0.82 + i * 0.035], [0, 1]);
   return (
-    <motion.span className="px-1 py-1.5 text-center font-mono text-[0.5625rem] uppercase tracking-[0.1em]" style={{ backgroundColor: useTransform(on, (v) => `rgba(168,32,45,${0.08 + v * 0.92})`), color: useTransform(on, (v) => (v > 0.5 ? "#ffffff" : "#111111")) }}>
+    <motion.span className="px-1 py-1.5 text-center font-mono text-[0.6875rem] uppercase tracking-[0.1em]" style={{ backgroundColor: useTransform(on, (v) => `rgba(168,32,45,${0.08 + v * 0.92})`), color: useTransform(on, (v) => (v > 0.5 ? "#ffffff" : "#111111")) }}>
       {label}
     </motion.span>
   );
@@ -213,7 +213,7 @@ export function ProcessScroll() {
             <span className="eyebrow hidden text-[#e6c27a] sm:inline">The process</span>
             <ol className="flex flex-1 items-center gap-2">
               {beats.map((b, i) => (
-                <li key={b.k} className={`flex-1 border-t-2 pt-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] transition-colors duration-500 ${i <= beat ? "border-[#e6c27a] text-[#e6c27a]" : "border-white/20 text-white/40"}`}>
+                <li key={b.k} className={`flex-1 border-t-2 pt-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] transition-colors duration-500 ${i <= beat ? "border-[#e6c27a] text-[#e6c27a]" : "border-white/20 text-white/40"}`}>
                   {b.k}
                 </li>
               ))}
@@ -254,7 +254,7 @@ export function ProcessScroll() {
         >
           You do not need to be louder. You need to be <span className="hl-on-dark">legible.</span>
         </motion.p>
-        <p className="absolute right-4 top-32 z-20 hidden font-mono text-[0.625rem] uppercase tracking-[0.14em] text-[#f5efe3]/50 md:block">Illustrative results</p>
+        <p className="absolute right-4 top-32 z-20 hidden font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-[#f5efe3]/50 md:block">Illustrative results</p>
       </motion.div>
     </section>
   );

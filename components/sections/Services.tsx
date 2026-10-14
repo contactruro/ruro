@@ -82,7 +82,7 @@ export function Services() {
                   className="jr-float absolute inset-x-0 bottom-0 mx-auto h-[94%] w-auto max-w-[86%] object-contain object-bottom drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-[1.04]"
                   style={{ "--fd": `${i * -1.5}s`, "--fa": "6px" } as React.CSSProperties}
                 />
-                <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.625rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">{s.n}</span>
+                <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">{s.n}</span>
               </div>
               <div className="flex flex-1 flex-col p-5 md:p-6">
                 <h3 className="display text-3xl leading-tight text-[#f3e6c4]">{s.title}</h3>
@@ -100,7 +100,7 @@ export function Services() {
                     <LinkedinLogo weight="fill" className="size-6" />
                     <GlobeSimple weight="fill" className="size-6" />
                     <Newspaper weight="fill" className="size-6" />
-                    <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-[#f5efe3]/65">Where people look you up</span>
+                    <span className="font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#f5efe3]/65">Where people look you up</span>
                   </p>
                 )}
               </div>

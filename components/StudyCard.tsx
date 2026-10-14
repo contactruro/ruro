@@ -15,7 +15,7 @@ export function BrowserFrame({ s, priority = false, className = "" }: { s: Study
           <span className="size-2 rounded-full bg-ink/15" />
         </span>
         <span className="flex-1 truncate bg-paper px-3 py-1 text-center font-mono text-[0.6875rem] text-ink/70">{s.domain}</span>
-        <span className="hidden whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.14em] text-ink/70 sm:inline">Not RURO work</span>
+        <span className="hidden whitespace-nowrap font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink/70 sm:inline">Not RURO work</span>
       </div>
       <div className="relative aspect-[16/9] overflow-hidden">
         <Image

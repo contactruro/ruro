@@ -22,7 +22,7 @@ export function DesignDna({ dna }: { dna: NonNullable<Concept["dna"]> }) {
         {dna.palette.map((q) => (
           <button key={q.hex} type="button" onClick={() => copy(q.hex)} className="group text-left" aria-label={`${q.name}, ${q.hex}. Copy colour`}>
             <span className="block aspect-[4/3] border border-ink/20 transition-transform duration-300 group-hover:-translate-y-0.5" style={{ background: q.hex }} />
-            <span className="mt-1.5 block truncate font-mono text-[0.625rem] uppercase tracking-[0.06em] text-ink/70">{copied === q.hex ? "Copied" : q.hex}</span>
+            <span className="mt-1.5 block truncate font-mono text-[0.6875rem] uppercase tracking-[0.06em] text-ink/70">{copied === q.hex ? "Copied" : q.hex}</span>
             <span className="block truncate text-[0.6875rem] text-ink/55">{q.name}</span>
           </button>
         ))}

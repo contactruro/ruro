@@ -158,7 +158,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
             <span className="size-2 rounded-full bg-ink/15" />
           </span>
           <span className="flex-1 truncate bg-paper px-3 py-1 text-center font-mono text-[0.6875rem] text-ink/70">{label}</span>
-          <span className={`whitespace-nowrap px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.14em] ${tone === "ink" ? "bg-ink text-paper" : "bg-royal text-paper"}`}>{tag}</span>
+          <span className={`whitespace-nowrap px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${tone === "ink" ? "bg-ink text-paper" : "bg-royal text-paper"}`}>{tag}</span>
         </div>
       )}
       <div className={phone ? "overflow-hidden rounded-[1.6rem] bg-paper" : ""}>{body}</div>
@@ -328,7 +328,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
             rel="noopener noreferrer nofollow"
             data-track="showcase_visit"
             data-track-person={c.slug}
-            className="group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-royal"
+            className="group inline-flex items-center gap-2 py-2.5 font-mono text-xs uppercase tracking-[0.14em] text-royal"
           >
             <span className="link-underline">{real ? `See the real ${c.domain}` : `Read about ${c.person}`}</span>
             <ArrowUpRight aria-hidden className="size-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

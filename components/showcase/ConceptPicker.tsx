@@ -30,7 +30,7 @@ export function ConceptPicker({ index, onPick }: { index: number; onPick: (i: nu
             </span>
             <span className="min-w-0">
               <span className="display block truncate text-lg leading-tight md:text-2xl">{x.person}</span>
-              <span className={`mt-0.5 block truncate font-mono text-[0.625rem] uppercase tracking-[0.12em] ${on ? "text-paper/85" : "text-royal/75"}`}>{x.design?.name ?? x.domain}</span>
+              <span className={`mt-0.5 block truncate font-mono text-[0.6875rem] uppercase tracking-[0.12em] ${on ? "text-paper/85" : "text-royal/75"}`}>{x.design?.name ?? x.domain}</span>
               <span className="mt-2 flex gap-1" aria-hidden>
                 {x.dna?.palette.map((q) => (
                   <i key={q.hex} className="size-2.5 rounded-full ring-1 ring-current/30" style={{ background: q.hex }} />

@@ -5,7 +5,8 @@ export const site = {
   positioning: "RURO writes, builds and looks after personal websites for founders and executives.",
   expansion: "Reputation. Uniquely. Represented. Online.",
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://ruro.in").replace(/\/$/, ""),
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "studio@ruro.in",
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "aaru@ruro.in",
+  emailAlt: "contact.ruro@gmail.com",
   description:
     "RURO builds personal websites for founders and executives. We interview you, write your story, and keep it up to date, so people who search your name find the real you.",
 };

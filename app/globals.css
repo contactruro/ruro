@@ -352,10 +352,3 @@ html[data-calm] .cloud-rise { animation-play-state: paused; }
 .pillar-sway.-scale-x-100 { animation-name: pillar-sway-flip; }
 @keyframes pillar-sway-flip { 0%, 100% { transform: scaleX(-1) translateY(0) rotate(0deg); } 50% { transform: scaleX(-1) translateY(-10px) rotate(-0.5deg); } }
 @media (prefers-reduced-motion: reduce) { .pillar-sway { animation: none; } }
-
-/* The home film on a portrait screen: the frame sits across the top, melting into a blurred, dimmed copy behind it. */
-.film-fill { display: none; background-size: cover; background-position: 55% 40%; filter: blur(22px) brightness(0.95) saturate(1); transform: scale(1.25); opacity: 0.85; }
-@media (max-aspect-ratio: 1/1) {
-  .film-fill { display: block; }
-  .film-canvas { -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 calc(var(--fe, 45%) * 0.28), #000 calc(var(--fe, 45%) - 16%), transparent var(--fe, 45%)); mask-image: linear-gradient(to bottom, transparent 0, #000 calc(var(--fe, 45%) * 0.28), #000 calc(var(--fe, 45%) - 16%), transparent var(--fe, 45%)); }
-}

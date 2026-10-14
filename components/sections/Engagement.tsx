@@ -62,13 +62,13 @@ function DayRuler({ when }: { when: string }) {
         {Array.from({ length: 14 }, (_, k) => {
           const lit = k + 1 >= a && k + 1 <= b;
           return (
-            <span key={k} className={`relative z-10 py-2 text-center font-mono text-[0.625rem] tabular-nums transition-colors duration-300 md:text-xs ${lit ? "font-bold text-[#17233b]" : "text-[#f5efe3]/55"}`}>
+            <span key={k} className={`relative z-10 py-2 text-center font-mono text-[0.6875rem] tabular-nums transition-colors duration-300 md:text-xs ${lit ? "font-bold text-[#17233b]" : "text-[#f5efe3]/55"}`}>
               {k + 1}
             </span>
           );
         })}
       </div>
-      <p className="mt-2 flex justify-between font-mono text-[0.625rem] uppercase tracking-[0.18em] text-[#e6c27a]/80">
+      <p className="mt-2 flex justify-between font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-[#e6c27a]/80">
         <span>Day 1 · first call</span>
         <span>Day 14 · live</span>
       </p>
@@ -107,7 +107,7 @@ function WordBoard({ active, onPick }: { active: number; onPick: (n: number) => 
         })}
       </div>
       <p className="mt-4 flex items-center justify-center gap-1.5">
-        <span className="mr-2 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-royal/70">Unscrambled</span>
+        <span className="mr-2 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-royal/70">Unscrambled</span>
         {WORDS[active].split("").map((ch, i) => (
           <span key={`${active}-${i}`} className="pop grid size-7 place-items-center bg-[#e6c27a] font-mono text-sm font-bold text-[#17233b]" style={{ "--d": `${i * 0.06}s` } as CSSProperties}>
             {ch}
@@ -239,7 +239,7 @@ function LaunchView() {
         <div className="flex items-center justify-center gap-4 border-t-2 border-royal/20 bg-royal/5 px-4 py-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={`${ART}/gold-sun.webp`} alt="" loading="lazy" draggable={false} className="sun-turn size-9 object-contain" />
-          <span className="font-mono text-[0.625rem] uppercase tracking-[0.18em] text-royal">Day 14 · your home is open</span>
+          <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-royal">Day 14 · your home is open</span>
         </div>
       </div>
       <ul className="mt-5 flex flex-col gap-2">
@@ -394,7 +394,7 @@ export function Engagement() {
                 draggable={false}
                 className="step-figure absolute inset-x-2 bottom-0 top-10 mx-auto h-[calc(100%-2.5rem)] w-[calc(100%-1rem)] object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]"
               />
-              <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.625rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">Step {stage.n}</span>
+              <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">Step {stage.n}</span>
             </div>
 
             <div key={`txt-${i}`} className="rise-in border-2 border-[#e6c27a]/60 bg-[#f7f3eb] p-6 text-ink md:col-span-3 md:p-8 xl:col-span-4">
@@ -482,10 +482,10 @@ export function Engagement() {
                 draggable={false}
                 className="step-figure absolute inset-x-2 bottom-0 top-10 mx-auto h-[calc(100%-2.5rem)] w-[calc(100%-1rem)] object-contain object-bottom drop-shadow-[0_22px_22px_rgba(0,0,0,0.5)]"
               />
-              <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.625rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">
+              <span className="absolute left-3 top-3 bg-[#e6c27a] px-2.5 py-1 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-[#17233b]">
                 Chapter {ring + 1} of {stewardship.length}
               </span>
-              <span className="absolute right-3 top-3 font-mono text-[0.625rem] uppercase tracking-[0.18em] text-[#f3e6c4]">{stewardship[ring].cadence}</span>
+              <span className="absolute right-3 top-3 font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-[#f3e6c4]">{stewardship[ring].cadence}</span>
             </div>
 
             <div className="flex flex-col lg:col-span-7">

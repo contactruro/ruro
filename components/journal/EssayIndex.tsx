@@ -115,7 +115,7 @@ export function EssayIndex({ essays }: { essays: E[] }) {
 
               <div className="relative flex h-full flex-col px-9 pb-9 pt-9 text-[#f5efe3]">
                 <div className="flex items-center justify-between">
-                  <span className="border border-[#e6c27a]/70 px-2.5 py-1 font-mono text-[0.625rem] uppercase tracking-[0.16em] text-[#f3e6c4]">
+                  <span className="border border-[#e6c27a]/70 px-2.5 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-[#f3e6c4]">
                     Essay {NUMERALS[a]} · {cur.readingTime} read
                   </span>
                   <span className="flex gap-1.5" aria-hidden>

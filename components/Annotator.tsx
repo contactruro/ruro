@@ -216,7 +216,7 @@ export function Annotator({ notes, children }: { notes: Annotation[]; children: 
               >
                 <span aria-hidden className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-[#e6c27a] to-accent" />
                 <div className="flex items-start justify-between gap-3">
-                  <span className={`px-2 py-0.5 font-mono text-[0.625rem] uppercase tracking-[0.14em] ${TAG[notes[open].kind]}`}>{notes[open].kind}</span>
+                  <span className={`px-2 py-0.5 font-mono text-[0.6875rem] uppercase tracking-[0.14em] ${TAG[notes[open].kind]}`}>{notes[open].kind}</span>
                   <button
                     type="button"
                     aria-label="Close note"

@@ -50,7 +50,7 @@ export function ParallaxScene({ children, className = "" }: { children: React.Re
 
   return (
     <Progress.Provider value={scrollYProgress}>
-      <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 overflow-visible [perspective:1300px] ${className}`} style={{ "--mx": 0, "--my": 0 } as React.CSSProperties}>
+      <div ref={ref} aria-hidden className={`pointer-events-none absolute inset-0 overflow-x-clip overflow-y-visible [perspective:1300px] ${className}`} style={{ "--mx": 0, "--my": 0 } as React.CSSProperties}>
         {children}
       </div>
     </Progress.Provider>

@@ -74,7 +74,7 @@ export function ProcessTimeline() {
                 {s.gate && (
                   <div aria-hidden className="absolute right-0 top-[22px] z-[1] hidden -translate-y-1/2 translate-x-1/2 lg:block">
                     <span className="block size-2.5 rotate-45 border border-accent bg-paper" />
-                    <span className="absolute bottom-full left-1/2 mb-3 -translate-x-1/2 whitespace-nowrap font-mono text-[0.625rem] uppercase tracking-[0.14em] text-accent">
+                    <span className="absolute bottom-full left-1/2 mb-3 -translate-x-1/2 whitespace-nowrap font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent">
                       {s.gate}
                     </span>
                   </div>
@@ -86,18 +86,18 @@ export function ProcessTimeline() {
                     <img src="/art/myth/cloud-soft.webp" alt="" loading="lazy" draggable={false} className="cloud-feather absolute inset-x-[-12%] bottom-[-10%] w-[124%] opacity-70" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={STEP_ART[i].src} alt="" loading="lazy" draggable={false} className="jr-float relative h-[92%] w-auto max-w-[80%] object-contain object-bottom drop-shadow-[0_14px_14px_rgba(60,20,25,0.3)]" style={{ "--fd": `${i * -1.4}s`, "--fa": "6px" } as React.CSSProperties} />
-                    <span className="absolute left-2 top-2 bg-accent px-2 py-0.5 font-mono text-[0.5625rem] font-bold uppercase tracking-[0.18em] text-paper">{STEP_ART[i].tag}</span>
+                    <span className="absolute left-2 top-2 bg-accent px-2 py-0.5 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-paper">{STEP_ART[i].tag}</span>
                   </div>
                   <p className="pt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/65 lg:pt-0">{s.when}</p>
                   <h3 className="display mt-2 text-3xl">{s.title}</h3>
                   <p className="mt-4 leading-relaxed text-ink/70">{s.body}</p>
 
                   <div className="mt-6 border-t border-ink/10 pt-4">
-                    <p className="eyebrow text-[0.625rem] text-ink/65">Your part</p>
+                    <p className="eyebrow text-[0.6875rem] text-ink/65">Your part</p>
                     <p className="mt-1.5 text-sm leading-snug text-ink/85">{s.yourPart}</p>
                   </div>
                   <div className="mt-4 border-t border-ink/10 pt-4">
-                    <p className="eyebrow text-[0.625rem] text-ink/65">You receive</p>
+                    <p className="eyebrow text-[0.6875rem] text-ink/65">You receive</p>
                     <ul className="mt-2 flex flex-wrap gap-1.5">
                       {s.receive.map((r) => (
                         <li key={r} className="rounded-none border border-accent/20 bg-accent-tint px-2.5 py-1 text-xs text-accent-deep">
@@ -108,7 +108,7 @@ export function ProcessTimeline() {
                   </div>
 
                   {s.gate && (
-                    <p className="mt-6 inline-flex items-center gap-2 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-accent lg:hidden">
+                    <p className="mt-6 inline-flex items-center gap-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-accent lg:hidden">
                       <CheckCircle aria-hidden className="size-4" />
                       {s.gate}
                     </p>

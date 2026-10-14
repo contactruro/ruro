@@ -37,24 +37,27 @@ export function Footer() {
               {site.email}
               <ArrowUpRight aria-hidden className="size-6 transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1 md:size-7" />
             </a>
-            <p className="mt-5 max-w-sm text-[#f5efe3]/75">{site.positioning}</p>
+            <a href={`mailto:${site.emailAlt}`} className="link-underline mt-2 inline-block py-2 text-lg text-[#f5efe3]/85 hover:text-[#e6c27a]">
+              {site.emailAlt}
+            </a>
+            <p className="mt-3 max-w-sm text-[#f5efe3]/75">{site.positioning}</p>
           </div>
           <nav aria-label="Footer" className="grid grid-cols-2 gap-10 md:col-span-5 md:col-start-8 md:justify-items-end">
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-1">
               <li className="eyebrow mb-2 text-[#e6c27a]/80">Studio</li>
               {footerNav.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="link-underline text-[#f5efe3]/85 hover:text-[#f5efe3]">
+                  <Link href={l.href} className="link-underline inline-block py-1.5 text-[#f5efe3]/85 hover:text-[#f5efe3]">
                     {l.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-1">
               <li className="eyebrow mb-2 text-[#e6c27a]/80">Legal</li>
               {legalNav.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="link-underline text-[#f5efe3]/85 hover:text-[#f5efe3]">
+                  <Link href={l.href} className="link-underline inline-block py-1.5 text-[#f5efe3]/85 hover:text-[#f5efe3]">
                     {l.label}
                   </Link>
                 </li>
@@ -79,7 +82,7 @@ export function Footer() {
               <li key={i} className="flex flex-col items-center gap-2 border-[#e6c27a]/35 px-1 pb-6 pt-6 max-sm:odd:border-r max-sm:[&:nth-child(-n+2)]:border-b sm:border-r sm:last:border-r-0 md:gap-4 md:pb-10 md:pt-10">
                 <FooterFigure src={FIGURES[i]} index={i} />
                 <Wordmark className="text-[clamp(2.75rem,8vw,7rem)] leading-none text-[#f5efe3]">{l}</Wordmark>
-                <span className="eyebrow text-[0.625rem] text-[#e6c27a] md:text-xs">{words[i]?.replace(/\.$/, "")}</span>
+                <span className="eyebrow text-[0.6875rem] text-[#e6c27a] md:text-xs">{words[i]?.replace(/\.$/, "")}</span>
               </li>
             ))}
           </ol>

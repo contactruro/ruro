@@ -47,10 +47,10 @@ export function CompareSlider({ before, after, startLabel, endLabel }: { before:
         {before}
       </div>
 
-      <span className="pointer-events-none absolute left-3 top-3 z-20 bg-ink px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-paper" style={{ opacity: pos > 14 ? 1 : 0 }}>
+      <span className="pointer-events-none absolute left-3 top-3 z-20 bg-ink px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-paper" style={{ opacity: pos > 14 ? 1 : 0 }}>
         {startLabel}
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 z-20 bg-royal px-2 py-1 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-paper" style={{ opacity: pos < 86 ? 1 : 0 }}>
+      <span className="pointer-events-none absolute right-3 top-3 z-20 bg-royal px-2 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-paper" style={{ opacity: pos < 86 ? 1 : 0 }}>
         {endLabel}
       </span>
 

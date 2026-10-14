@@ -3,18 +3,18 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, CheckCircle, WarningCircle } from "@phosphor-icons/react/dist/ssr";
-import { contexts, validateEnquiry, type Enquiry, type Errors } from "@/lib/enquiry";
+import { dialCodes, services, validateEnquiry, type Enquiry, type Errors } from "@/lib/enquiry";
 import { EASE } from "./ui/Reveal";
 import { site, studio } from "@/lib/site";
 import { track } from "@/lib/analytics";
 
-const empty: Enquiry = { name: "", email: "", role: "", company: "", link: "", represent: "", context: "", audit: false, website_confirm: "" };
+const empty: Enquiry = { name: "", email: "", dialCode: "+91", phone: "", role: "", company: "", link: "", business: "", service: "", website_confirm: "" };
 
 const fieldBase =
   "w-full rounded-xl border bg-paper px-4 py-3 text-base text-ink placeholder:text-ink/55 transition-[border-color,box-shadow] duration-300 focus:outline-none focus:ring-2 focus:ring-accent/40";
 
 export function EnquiryForm({ audit = false }: { audit?: boolean }) {
-  const [data, setData] = useState<Enquiry>({ ...empty, audit, context: audit ? contexts[2] : "" });
+  const [data, setData] = useState<Enquiry>({ ...empty, service: audit ? services[2] : "" });
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [message, setMessage] = useState("");
@@ -22,7 +22,7 @@ export function EnquiryForm({ audit = false }: { audit?: boolean }) {
   const onStart = () => {
     if (started.current) return;
     started.current = true;
-    track("form_start", { audit: data.audit });
+    track("form_start", { audit });
   };
 
   const set = <K extends keyof Enquiry>(k: K, v: Enquiry[K]) => {
@@ -51,7 +51,7 @@ export function EnquiryForm({ audit = false }: { audit?: boolean }) {
         setStatus("error");
         return;
       }
-      track("form_submit_success", { audit: data.audit, context: data.context || "none" });
+      track("form_submit_success", { service: data.service });
       setStatus("sent");
     } catch {
       setMessage("Connection failed. Please check your connection and try again.");
@@ -59,12 +59,13 @@ export function EnquiryForm({ audit = false }: { audit?: boolean }) {
     }
   };
 
-  const field = (k: keyof Enquiry, label: string, opts: { type?: string; placeholder?: string; optional?: boolean; autoComplete?: string } = {}) => (
+  const field = (k: keyof Enquiry, label: string, opts: { type?: string; placeholder?: string; optional?: boolean; autoComplete?: string; hint?: string } = {}) => (
     <div>
-      <label htmlFor={`f-${k}`} className="flex items-baseline justify-between text-sm font-medium text-ink">
+      <label htmlFor={`f-${k}`} className="flex items-baseline justify-between gap-3 text-base font-semibold text-ink">
         {label}
         {opts.optional && <span className="text-xs font-normal text-ink/65">Optional</span>}
       </label>
+      {opts.hint && <p id={`h-${k}`} className="mt-1 text-sm leading-snug text-ink/65">{opts.hint}</p>}
       <input
         id={`f-${k}`}
         name={k}
@@ -74,8 +75,8 @@ export function EnquiryForm({ audit = false }: { audit?: boolean }) {
         value={data[k] as string}
         onChange={(e) => set(k, e.target.value as never)}
         aria-invalid={!!errors[k]}
-        aria-describedby={errors[k] ? `e-${k}` : undefined}
-        className={`${fieldBase} mt-2 ${errors[k] ? "border-danger" : "border-ink/15 hover:border-ink/30"}`}
+        aria-describedby={[opts.hint ? `h-${k}` : "", errors[k] ? `e-${k}` : ""].filter(Boolean).join(" ") || undefined}
+        className={`${fieldBase} mt-3 ${errors[k] ? "border-danger" : "border-ink/15 hover:border-ink/30"}`}
       />
       {errors[k] && (
         <p id={`e-${k}`} className="mt-2 flex items-center gap-1.5 text-sm text-danger">
@@ -115,88 +116,111 @@ export function EnquiryForm({ audit = false }: { audit?: boolean }) {
           exit={{ opacity: 0 }}
         >
           <div className="grid gap-6 sm:grid-cols-2">
-            {field("name", "Name", { autoComplete: "name" })}
-            {field("email", "Email", { type: "email", autoComplete: "email" })}
-            {field("role", "Role", { placeholder: "Founder, partner, CEO…", autoComplete: "organization-title" })}
-            {field("company", "Company", { optional: true, autoComplete: "organization" })}
+            {field("name", "Name", { autoComplete: "name", hint: "Your full name, so we know who to write to." })}
+            {field("email", "Email", { type: "email", autoComplete: "email", hint: "Where we will send our reply." })}
+            {field("role", "Role", { placeholder: "Founder, CEO, MD…", autoComplete: "organization-title", hint: "What you do: founder, CEO, MD, creator, banker, or anything else." })}
+            {field("company", "Company", { optional: true, autoComplete: "organization", hint: "The name of your company or brand." })}
           </div>
-          {field("link", "Website or LinkedIn", { optional: true, placeholder: "linkedin.com/in/…", type: "url" })}
+          {field("link", "Company website", { optional: true, placeholder: "yourcompany.com", type: "url", hint: "Paste the link to your company's website, so we can see your work." })}
 
-          <fieldset aria-describedby={errors.context ? "e-context" : undefined}>
-            <legend className="flex w-full items-baseline justify-between text-sm font-medium text-ink">
-              Where are you starting?
-              <span className="text-xs font-normal text-ink/65">Optional</span>
-            </legend>
+          <div>
+            <label htmlFor="f-phone" className="text-base font-semibold text-ink">
+              Phone number with country code
+            </label>
+            <p id="h-phone" className="mt-1 text-sm leading-snug text-ink/65">Choose your country code first, then type your number.</p>
+            <div className="mt-3 flex gap-2">
+              <select
+                aria-label="Country code"
+                name="dialCode"
+                autoComplete="tel-country-code"
+                value={data.dialCode}
+                onChange={(e) => set("dialCode", e.target.value)}
+                className={`${fieldBase} w-32 shrink-0 border-ink/15 px-3 hover:border-ink/30 sm:w-44`}
+              >
+                {dialCodes.map((d) => (
+                  <option key={d.code} value={d.code}>
+                    {d.label}
+                  </option>
+                ))}
+              </select>
+              <input
+                id="f-phone"
+                name="phone"
+                type="tel"
+                inputMode="tel"
+                autoComplete="tel-national"
+                placeholder="98765 43210"
+                value={data.phone}
+                onChange={(e) => set("phone", e.target.value)}
+                aria-invalid={!!errors.phone}
+                aria-describedby={errors.phone ? "h-phone e-phone" : "h-phone"}
+                className={`${fieldBase} min-w-0 flex-1 ${errors.phone ? "border-danger" : "border-ink/15 hover:border-ink/30"}`}
+              />
+            </div>
+            {errors.phone && (
+              <p id="e-phone" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
+                <WarningCircle aria-hidden weight="bold" className="size-4 shrink-0" />
+                {errors.phone}
+              </p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="f-business" className="text-base font-semibold text-ink">
+              What does your company do?
+            </label>
+            <p id="h-business" className="mt-1 text-sm leading-snug text-ink/65">A line or two: what you make or sell, and who it is for.</p>
+            <textarea
+              id="f-business"
+              name="business"
+              rows={4}
+              value={data.business}
+              onChange={(e) => set("business", e.target.value)}
+              placeholder="In a sentence or two: what you build or sell, and for whom."
+              aria-invalid={!!errors.business}
+              aria-describedby={errors.business ? "h-business e-business" : "h-business"}
+              className={`${fieldBase} mt-3 resize-y ${errors.business ? "border-danger" : "border-ink/15 hover:border-ink/30"}`}
+            />
+            {errors.business && (
+              <p id="e-business" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
+                <WarningCircle aria-hidden weight="bold" className="size-4 shrink-0" />
+                {errors.business}
+              </p>
+            )}
+          </div>
+
+          <fieldset aria-describedby={errors.service ? "e-service" : undefined}>
+            <legend className="text-base font-semibold text-ink">What service do you expect from us?</legend>
+            <p className="mt-1 text-sm leading-snug text-ink/65">Pick the one that is closest. We can change it together later.</p>
             <div className="mt-3 grid gap-2 sm:grid-cols-2">
-              {contexts.map((c) => (
+              {services.map((c, i) => (
                 <label
                   key={c}
-                  className={`flex cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-base transition-colors duration-300 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-accent/50 ${
-                    data.context === c ? "border-oxblood bg-oxblood text-paper" : "border-ink/15 bg-paper hover:border-ink/30"
+                  className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 text-base transition-colors duration-300 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-accent/50 ${
+                    data.service === c ? "border-oxblood bg-oxblood text-paper" : "border-ink/15 bg-paper hover:border-ink/30"
                   }`}
                 >
                   <input
                     type="radio"
-                    name="context"
+                    name="service"
                     value={c}
-                    checked={data.context === c}
-                    onChange={() => {
-                      set("context", c);
-                      if (c === contexts[2]) set("audit", true);
-                    }}
+                    checked={data.service === c}
+                    onChange={() => set("service", c)}
                     className="sr-only"
-                    id={c === contexts[0] ? "f-context" : undefined}
+                    id={i === 0 ? "f-service" : undefined}
                   />
-                  <span aria-hidden className={`size-3 shrink-0 rounded-full border ${data.context === c ? "border-saffron-soft bg-saffron-soft" : "border-ink/40"}`} />
+                  <span aria-hidden className={`size-3 shrink-0 rounded-full border ${data.service === c ? "border-saffron-soft bg-saffron-soft" : "border-ink/40"}`} />
                   {c}
                 </label>
               ))}
             </div>
-            {errors.context && (
-              <p id="e-context" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
+            {errors.service && (
+              <p id="e-service" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
                 <WarningCircle aria-hidden weight="bold" className="size-4 shrink-0" />
-                {errors.context}
+                {errors.service}
               </p>
             )}
           </fieldset>
-
-          <div>
-            <label htmlFor="f-represent" className="text-sm font-medium text-ink">
-              What should your site say about you?
-            </label>
-            <textarea
-              id="f-represent"
-              name="represent"
-              rows={5}
-              value={data.represent}
-              onChange={(e) => set("represent", e.target.value)}
-              placeholder="Your work, your companies, and who looks you up…"
-              aria-invalid={!!errors.represent}
-              aria-describedby={errors.represent ? "e-represent" : undefined}
-              className={`${fieldBase} mt-2 resize-y ${errors.represent ? "border-danger" : "border-ink/15 hover:border-ink/30"}`}
-            />
-            {errors.represent && (
-              <p id="e-represent" className="mt-2 flex items-center gap-1.5 text-sm text-danger">
-                <WarningCircle aria-hidden weight="bold" className="size-4 shrink-0" />
-                {errors.represent}
-              </p>
-            )}
-          </div>
-
-          <label className="flex cursor-pointer items-start gap-4 rounded-2xl border border-accent/30 bg-accent-tint p-5">
-            <input
-              type="checkbox"
-              checked={data.audit}
-              onChange={(e) => set("audit", e.target.checked)}
-              className="mt-1 size-5 shrink-0 accent-accent"
-            />
-            <span>
-              <span className="block font-semibold text-ink">Include an online presence review</span>
-              <span className="mt-1 block text-sm text-ink/70">
-                A short report on what people find when they search your name, and the three things to fix first.
-              </span>
-            </span>
-          </label>
 
           {/* Honeypot */}
           <div aria-hidden className="absolute -left-[9999px] h-0 overflow-hidden">
