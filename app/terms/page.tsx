@@ -8,6 +8,7 @@ export const metadata: Metadata = pageMeta({
   description:
     "The terms that apply when you use the RURO website at ruro.in, send an enquiry, or follow links from our pages to other sites.",
   path: "/terms",
+  noindex: true,
 });
 
 export default function TermsPage() {

@@ -13,8 +13,10 @@ export const founder = {
 };
 
 /** Page metadata with its canonical address, share card and Twitter card kept consistent. */
-export function pageMeta(o: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string }): Metadata {
+export function pageMeta(o: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean }): Metadata {
   return {
+    // Pages that exist for readers but should not compete in search results (the legal pages) say so here.
+    ...(o.noindex ? { robots: { index: false, follow: true } } : {}),
     title: o.title,
     description: o.description,
     alternates: { canonical: o.path },

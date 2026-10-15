@@ -3,10 +3,10 @@ import { journal, studies } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/sample", "/work", "/process", "/journal", "/about", "/contact", "/privacy", "/terms"].map((p) => ({
+  const pages = ["", "/sample", "/work", "/process", "/journal", "/about", "/contact"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "monthly" as const,
-    priority: p === "" ? 1 : p === "/privacy" || p === "/terms" ? 0.2 : 0.8,
+    priority: p === "" ? 1 : 0.8,
   }));
   const essays = journal.map((e) => ({
     url: `${site.url}/journal/${e.slug}`,

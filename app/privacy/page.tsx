@@ -8,6 +8,7 @@ export const metadata: Metadata = pageMeta({
   description:
     "How RURO collects, uses and protects the personal information you share when you visit ruro.in or send an enquiry.",
   path: "/privacy",
+  noindex: true,
 });
 
 export default function PrivacyPage() {
