@@ -32,7 +32,7 @@ export default function AboutPage() {
         lines={["Not an agency.", <span key="b" className="text-accent">A studio for people.</span>]}
         intro={
           <p>
-            RURO is a small studio. We write, design, build and look after personal websites for founders and executives.{studio.city && ` We work from ${studio.city}.`} Agencies work for companies. We work for the people behind them.
+            RURO (ruro.in) is a small web design and digital identity studio, founded by Aarupadaiyar KJ. We research, write, design, build and look after personal websites for founders, executives and established professionals, in India and around the world.{studio.city && ` We work from ${studio.city}.`} Agencies work for companies. We work for the people behind them.
           </p>
         }
         aside={

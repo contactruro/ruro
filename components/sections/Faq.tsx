@@ -14,7 +14,7 @@ export function Faq({ kicker = "Questions" }: { kicker?: string }) {
       studio.stewardshipFrom ? `(${studio.stewardshipFrom.replace(/^Stewardship /i, "")}).` : "after launch.",
     ].join(" "),
   };
-  const items = [faqs[0], faqs[1], cost, ...faqs.slice(2)];
+  const items = [faqs[0], faqs[1], faqs[2], cost, ...faqs.slice(3)];
 
   return (
     <section aria-labelledby="faq-title" className="relative overflow-hidden tone-rose bg-tone py-24 md:py-36">

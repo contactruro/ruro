@@ -546,6 +546,10 @@ export const journal: Essay[] = [
    come from `studio` in lib/site.ts and are added by the FAQ component when set. */
 export const faqs = [
   {
+    q: "What is RURO?",
+    a: "RURO (ruro.in) is a web design and digital identity studio founded by Aarupadaiyar KJ. We research, write, design, build and maintain personal websites for founders, executives and established professionals, working with clients in India and around the world. The name stands for Reputation. Uniquely. Represented. Online. RURO is not connected to any other company that shares the name.",
+  },
+  {
     q: "What is a digital estate?",
     a: "It is our name for a personal website done properly. It holds your story, your work, your press and your ideas. We write it with you, design it for you, build it at your own address, and keep it up to date.",
   },
