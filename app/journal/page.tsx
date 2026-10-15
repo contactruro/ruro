@@ -15,7 +15,7 @@ import { ReadProgress } from "@/components/journal/ReadProgress";
 export const metadata: Metadata = pageMeta({
   title: "The Journal",
   description:
-    "The RURO Journal: essays on reputation, identity and the public record, for people whose names already carry weight.",
+    "RURO designs and builds personal websites for founders and executives. The Journal covers reputation, digital identity and what people find when they search your name.",
   path: "/journal",
 });
 

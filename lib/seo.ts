@@ -48,6 +48,8 @@ export const siteGraph = {
       slogan: site.tagline,
       description: site.description,
       email: site.email,
+      logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 1024, height: 1024 },
+      image: `${site.url}/logo.png`,
       founder: { "@id": founderId },
       serviceType: ["Digital identity", "Personal website design", "Digital estate stewardship"],
       areaServed: "Worldwide",

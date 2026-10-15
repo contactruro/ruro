@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ...pageMeta({
     title: "RURO · Digital identity studio for founders and executives",
     description:
-      "RURO researches, writes, builds and looks after personal websites for founders and executives, so people who search your name find the real you.",
+      "RURO is a digital identity studio. We design, write, build and maintain personal websites for founders, executives and established professionals in India and worldwide.",
     path: "/",
   }),
   title: { absolute: "RURO · Digital identity studio for founders and executives" },

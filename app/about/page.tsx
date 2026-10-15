@@ -11,7 +11,7 @@ import { site, studio } from "@/lib/site";
 export const metadata: Metadata = pageMeta({
   title: "About",
   description:
-    "RURO is a small studio that researches, writes, designs, builds and maintains personal websites for founders and executives. Meet the founder.",
+    "RURO is a digital identity studio. We research, write, design, build and maintain personal websites for founders and executives. Meet the founder.",
   path: "/about",
 });
 

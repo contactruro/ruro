@@ -8,7 +8,7 @@ export const site = {
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || "aaru@ruro.in",
   emailAlt: "contact.ruro@gmail.com",
   description:
-    "RURO builds personal websites for founders and executives. We interview you, write your story, and keep it up to date, so people who search your name find the real you.",
+    "RURO is a digital identity studio. We design, write, build and maintain personal websites for founders and executives, in India and worldwide, so people who search your name find the real you.",
 };
 
 /* ───────── Business facts only RURO can supply ─────────
