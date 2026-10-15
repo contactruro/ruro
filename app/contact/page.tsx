@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { EnquiryForm } from "@/components/EnquiryForm";
 import { HeaderScene, SkyScene } from "@/components/atelier/Scenes";
 import { MaskLines } from "@/components/ui/Reveal";
 import { audit } from "@/lib/content";
 import { site, studio } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Start a conversation",
-  description: "Ask for an online presence review, or tell us about the website you want.",
-  alternates: { canonical: "/contact" },
-  openGraph: { title: "Start a conversation · RURO", url: "/contact" },
-};
+  description:
+    "Ask RURO for an online presence review, or tell us about the personal website you want. Every enquiry is read personally.",
+  path: "/contact",
+});
 
 const steps = [
   ["01", "We read your enquiry ourselves."],

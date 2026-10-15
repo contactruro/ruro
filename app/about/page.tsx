@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/PageHeader";
 import { Philosophy } from "@/components/sections/Philosophy";
 import { Studio } from "@/components/sections/Studio";
@@ -7,13 +8,12 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { site, studio } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About",
   description:
-    "RURO is a small studio that researches, writes, designs, builds and maintains personal websites for founders and executives.",
-  alternates: { canonical: "/about" },
-  openGraph: { title: "About · RURO", url: "/about" },
-};
+    "RURO is a small studio that researches, writes, designs, builds and maintains personal websites for founders and executives. Meet the founder.",
+  path: "/about",
+});
 
 const principles = [
   { t: "Authorship", art: "vinyl-hands", b: "Your site says who you are, in your own words. We write the first draft and you approve it." },

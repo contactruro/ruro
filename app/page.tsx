@@ -1,17 +1,32 @@
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { pageMeta } from "@/lib/seo";
 import { Hero } from "@/components/sections/Hero";
 import { StoryScrub } from "@/components/sections/StoryScrub";
 import { HomeIntro } from "@/components/sections/HomeIntro";
-import { Statement } from "@/components/sections/Statement";
-import { Services } from "@/components/sections/Services";
-import { SampleSection } from "@/components/sections/SampleSection";
-import { Engagement } from "@/components/sections/Engagement";
-import { Studio } from "@/components/sections/Studio";
-import { FieldNotes } from "@/components/sections/FieldNotes";
-import { Faq } from "@/components/sections/Faq";
-import { FinalCta } from "@/components/sections/FinalCta";
+const Statement = dynamic(() => import("@/components/sections/Statement").then((m) => m.Statement));
+const Services = dynamic(() => import("@/components/sections/Services").then((m) => m.Services));
+const SampleSection = dynamic(() => import("@/components/sections/SampleSection").then((m) => m.SampleSection));
+const Engagement = dynamic(() => import("@/components/sections/Engagement").then((m) => m.Engagement));
+const Studio = dynamic(() => import("@/components/sections/Studio").then((m) => m.Studio));
+const FieldNotes = dynamic(() => import("@/components/sections/FieldNotes").then((m) => m.FieldNotes));
+const Faq = dynamic(() => import("@/components/sections/Faq").then((m) => m.Faq));
+const FinalCta = dynamic(() => import("@/components/sections/FinalCta").then((m) => m.FinalCta));
 
-/* Ordered the way a buyer decides: what it is, why it matters, what we do, what I would get, how it works
+/* Everything below the first screen is split into its own chunk. The server still sends its full HTML (crawlers and
+   readers see it at once), but the browser wakes it up in small pieces instead of one long block of work.
+   Ordered the way a buyer decides: what it is, why it matters, what we do, what I would get, how it works
    and what it costs, who does it, proof of taste, questions, the ask. */
+export const metadata: Metadata = {
+  ...pageMeta({
+    title: "RURO · Digital identity studio for founders and executives",
+    description:
+      "RURO researches, writes, builds and looks after personal websites for founders and executives, so people who search your name find the real you.",
+    path: "/",
+  }),
+  title: { absolute: "RURO · Digital identity studio for founders and executives" },
+};
+
 export default function Home() {
   return (
     <>

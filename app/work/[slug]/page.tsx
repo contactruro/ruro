@@ -7,6 +7,7 @@ import { BrowserFrame, VisitLink } from "@/components/StudyCard";
 import { MaskLines, Reveal } from "@/components/ui/Reveal";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { SkyScene } from "@/components/atelier/Scenes";
+import { breadcrumbLd, pageMeta } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -19,12 +20,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const s = studies.find((x) => x.slug === slug);
   if (!s) return {};
   const title = `${s.domain}: a study of ${s.person}’s website`;
-  return {
+  return pageMeta({
     title,
     description: `${s.summary} A breakdown of the design, functionality and luxury concept of ${s.domain}.`,
-    alternates: { canonical: `/work/${s.slug}` },
-    openGraph: { title: `${title} · RURO`, url: `/work/${s.slug}` },
-  };
+    path: `/work/${s.slug}`,
+  });
 }
 
 /* One numbered chapter of the breakdown: label on the left, content on the right. */
@@ -47,8 +47,14 @@ export default async function StudyPage({ params }: Params) {
   const s = studies[index];
   const next = studies[(index + 1) % studies.length];
 
+  const trail = breadcrumbLd([
+    { name: "Studies", path: "/work" },
+    { name: s.domain, path: `/work/${s.slug}` },
+  ]);
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trail) }} />
       <article className="relative isolate">
         <SkyScene variant="d" behind />
         <header className="container-ed pb-14 pt-32 md:pt-44">

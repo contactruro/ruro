@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/PageHeader";
 import { StudyCard } from "@/components/StudyCard";
 import { StudiesDeck } from "@/components/StudiesDeck";
@@ -7,13 +8,12 @@ import { FinalCta } from "@/components/sections/FinalCta";
 import { SkyScene } from "@/components/atelier/Scenes";
 import { studies } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Estates we study",
   description:
     "Eight personal websites by founders, investors and authors, from schwarzenegger.com to nav.al, broken down by design, functionality and sense of luxury.",
-  alternates: { canonical: "/work" },
-  openGraph: { title: "Estates we study · RURO", url: "/work" },
-};
+  path: "/work",
+});
 
 export default function WorkPage() {
   return (

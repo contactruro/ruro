@@ -87,6 +87,10 @@ export function CloudBank({
   useEffect(() => {
     const cv = ref.current;
     if (!cv) return;
+    // Everything below (the graphics context, compiling the shader, the first draw) is the costliest thing on the page
+    // to start, and the clouds sit far down it. So it starts only when the visitor has scrolled to within a screen or so
+    // of them, by which time it is ready before they come into view.
+    const init = (): (() => void) | undefined => {
     const gl = cv.getContext("webgl", { premultipliedAlpha: true, alpha: true, antialias: false, powerPreference: "low-power" });
     if (!gl) {
       setFallback(true);
@@ -171,6 +175,26 @@ export function CloudBank({
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(raf);
       gl.getExtension("WEBGL_lose_context")?.loseContext();
+    };
+    };
+    let stop: (() => void) | undefined;
+    let waiting: IntersectionObserver | undefined;
+    if (typeof IntersectionObserver === "undefined") {
+      stop = init();
+    } else {
+      waiting = new IntersectionObserver(
+        ([e]) => {
+          if (!e.isIntersecting) return;
+          waiting?.disconnect();
+          stop = init();
+        },
+        { rootMargin: "1000px 0px" },
+      );
+      waiting.observe(cv);
+    }
+    return () => {
+      waiting?.disconnect();
+      stop?.();
     };
   }, [reach, seed, fps, fade]);
 

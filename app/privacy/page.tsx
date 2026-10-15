@@ -1,24 +1,27 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy",
-  description: "How RURO handles personal information.",
-  alternates: { canonical: "/privacy" },
-};
+  description:
+    "How RURO collects, uses and protects the personal information you share when you visit ruro.in or send an enquiry.",
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy" updated="10 October 2026">
+    <LegalPage title="Privacy" updated="15 October 2026">
       <p>
         This draft policy describes how RURO handles information on this website. It should be reviewed by legal counsel
         before launch.
       </p>
       <h2>What we collect</h2>
       <p>
-        When you submit an enquiry we receive the details you provide: your name, email address, role, company, an
-        optional web address and your message. We do not use advertising trackers.
+        When you submit an enquiry we receive the details you provide: your name, email address, phone number with
+        country code, role, company, company website, a description of what your company does, and the service you
+        would like from us. We do not use advertising trackers.
       </p>
       <h2>Measuring the website</h2>
       <p>
@@ -30,7 +33,8 @@ export default function PrivacyPage() {
       <h2>How we use it</h2>
       <p>
         We use enquiry details only to reply to you and to prepare for a conversation. We do not sell or share them
-        with third parties, except service providers who help us operate the website and receive enquiries.
+        with third parties, except service providers who help us operate the website and receive enquiries. Enquiries
+        are received and stored through Google Forms (Google), and the website is hosted by Vercel.
       </p>
       <h2>Retention and your rights</h2>
       <p>

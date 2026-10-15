@@ -9,13 +9,15 @@ import Script from "next/script";
 import { Preloader } from "@/components/ui/Preloader";
 import { CinemaStage } from "@/components/cinema/CinemaStage";
 import { site } from "@/lib/site";
+import { siteGraph } from "@/lib/seo";
 
 /* Type: Instrument Serif for display (roman and italic), Inter for text and labels, and
    Cinzel (one weight) for the wordmark's big letters only. Caveat is used inside the showcase concepts. */
 const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif", display: "swap" });
 // The RURO wordmark: a classical roman capital, matched to the supplied logo.
 const logo = Cinzel({ subsets: ["latin"], weight: ["500"], variable: "--font-logo", display: "swap" });
-const hand = Caveat({ subsets: ["latin"], variable: "--font-hand", display: "swap" });
+// Only the showcase concepts use this one, so it is not fetched ahead of time on every page.
+const hand = Caveat({ subsets: ["latin"], variable: "--font-hand", display: "swap", preload: false });
 const sans = Inter({ subsets: ["latin"], variable: "--font-geist", display: "swap" });
 
 export const metadata: Metadata = {
@@ -34,7 +36,6 @@ export const metadata: Metadata = {
     "executive personal website",
     "premium personal website",
   ],
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "RURO",
@@ -57,18 +58,6 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "RURO",
-  alternateName: "RURO Digital Identity Studio",
-  url: site.url,
-  email: site.email,
-  slogan: site.tagline,
-  description: site.description,
-  serviceType: ["Digital identity", "Personal website design", "Digital estate stewardship"],
-};
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${serif.variable} ${sans.variable} ${logo.variable} ${hand.variable}`}>
@@ -88,7 +77,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteGraph) }} />
         <Providers>
           <Nav />
           <main id="main">{children}</main>

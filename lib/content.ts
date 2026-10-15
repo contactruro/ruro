@@ -596,7 +596,7 @@ export type Venture = { name: string; role: string; text: string; url?: string }
 export type Person = { name: string; role: string; bio: string; photo?: string; ventures?: Venture[]; placeholder?: true };
 export const team: Person[] = [
   {
-    name: "Aarupadaiyar Jeyapal",
+    name: "Aarupadaiyar KJ.",
     role: "Founder of RURO · Co-founder and CTO of Trafy and Stat6",
     bio: "Founder of RURO. Also a co-founder and CTO of two other companies, which are below.",
     photo: "/people/owner.jpg",

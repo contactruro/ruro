@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { LegalPage } from "@/components/LegalPage";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Terms",
-  description: "Terms of use for the RURO website.",
-  alternates: { canonical: "/terms" },
-};
+  description:
+    "The terms that apply when you use the RURO website at ruro.in, send an enquiry, or follow links from our pages to other sites.",
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

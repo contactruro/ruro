@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { journal } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -11,12 +12,12 @@ import { EssayIndex } from "@/components/journal/EssayIndex";
 import { ScrubText } from "@/components/journal/ScrubText";
 import { ReadProgress } from "@/components/journal/ReadProgress";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "The Journal",
-  description: "The RURO Journal: essays on reputation, identity and the public record, for people whose names already carry weight.",
-  alternates: { canonical: "/journal" },
-  openGraph: { title: "The RURO Journal", url: "/journal" },
-};
+  description:
+    "The RURO Journal: essays on reputation, identity and the public record, for people whose names already carry weight.",
+  path: "/journal",
+});
 
 const note = [
   "Most of what the internet says about a person was written by someone else, for some other purpose. A profile built for recruiters. A press release written for a funding round. A biography supplied to a conference by an assistant, years ago.",

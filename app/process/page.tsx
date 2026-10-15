@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import { PageHeader } from "@/components/PageHeader";
 import { ProcessTimeline } from "@/components/process/ProcessTimeline";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Faq } from "@/components/sections/Faq";
 import { faqs } from "@/lib/content";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Process",
-  description: "How RURO builds your personal website in four steps, with the days, your time and what you get at each.",
-  alternates: { canonical: "/process" },
-  openGraph: { title: "Process · RURO", url: "/process" },
-};
+  description:
+    "How RURO builds your personal website in four steps, with the days, your time and what you get at each, from the first call to launch.",
+  path: "/process",
+});
 
 const faqLd = {
   "@context": "https://schema.org",

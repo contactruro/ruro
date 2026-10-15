@@ -8,6 +8,7 @@ import { MaskLines, Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { cta, site } from "@/lib/site";
+import { breadcrumbLd, founder, pageMeta } from "@/lib/seo";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -19,12 +20,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const e = journal.find((x) => x.slug === slug);
   if (!e) return {};
-  return {
-    title: e.title,
-    description: e.dek,
-    alternates: { canonical: `/journal/${e.slug}` },
-    openGraph: { type: "article", title: e.title, description: e.dek, url: `/journal/${e.slug}`, publishedTime: e.date },
-  };
+  return pageMeta({ title: e.title, description: e.dek, path: `/journal/${e.slug}`, type: "article", publishedTime: e.date });
 }
 
 export default async function EssayPage({ params }: Params) {
@@ -41,14 +37,21 @@ export default async function EssayPage({ params }: Params) {
     headline: e.title,
     description: e.dek,
     datePublished: e.date,
-    author: { "@type": "Organization", name: "RURO" },
-    publisher: { "@type": "Organization", name: "RURO", url: site.url },
+    dateModified: e.date,
+    author: { "@type": "Organization", name: "RURO", url: site.url },
+    publisher: { "@type": "Organization", name: "RURO", url: site.url, founder: { "@type": "Person", name: founder.name } },
     mainEntityOfPage: `${site.url}/journal/${e.slug}`,
+    inLanguage: "en",
   };
+  const trail = breadcrumbLd([
+    { name: "Journal", path: "/journal" },
+    { name: e.title, path: `/journal/${e.slug}` },
+  ]);
 
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(trail) }} />
       <article>
         <header className={`${tone.cls} ${tone.wash} ${tone.text} pb-20 pt-36 md:pb-28 md:pt-48`}>
           <div className="container-ed">
