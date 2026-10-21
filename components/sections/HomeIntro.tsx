@@ -39,7 +39,7 @@ export function HomeIntro() {
         </div>
 
         <div className="relative lg:col-span-6 lg:-mr-6 xl:-mr-12">
-          <StatueScene />
+          <StatueScene src="/art/myth/thinker-laptop.webp" fade={false} />
         </div>
       </div>
     </section>

@@ -72,6 +72,7 @@ export const siteGraph = {
       name: founder.name,
       jobTitle: founder.jobTitle,
       url: `${site.url}/about`,
+      sameAs: ["https://www.linkedin.com/in/aarupadaiyarkj/"],
       worksFor: { "@id": orgId },
     },
   ],

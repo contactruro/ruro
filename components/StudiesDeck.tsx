@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { studies } from "@/lib/content";
 
-/* The right side of the Studies header: the eight studied homepages as a stack of browser cards. The
+/* The right side of the Studies header: the studied homepages as a stack of browser cards. The
    front card slides off and the next one rises, on its own every few seconds. It floats, tilts toward
    the cursor, pauses when hovered and stops moving under reduced motion. Screenshots are the same
    captures used on the cards below (public/studies). */

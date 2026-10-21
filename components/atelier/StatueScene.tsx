@@ -12,7 +12,17 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 /* The bust is cut flat at the chest, so its base dissolves into the cloud instead of ending in an edge. */
 const BASE_FADE = "linear-gradient(to bottom, #000 0, #000 62%, transparent 94%)";
 
-export function StatueScene({ className = "" }: { className?: string }) {
+/* `src` is the figure standing in the scene (the blindfolded bust by default). `fade` softens the base of the figure into
+   the cloud, which suits a bust cut flat at the chest; a figure that is whole, like one at a laptop, turns it off. */
+export function StatueScene({
+  className = "",
+  src = "/art/myth/blindfold-bust.webp",
+  fade = true,
+}: {
+  className?: string;
+  src?: string;
+  fade?: boolean;
+}) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -50,12 +60,12 @@ export function StatueScene({ className = "" }: { className?: string }) {
       <motion.div style={reduce ? undefined : { y: statueY }} className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img loading="lazy" decoding="async"
-          src="/art/myth/blindfold-bust.webp"
+          src={src}
           alt=""
           className="absolute bottom-[6%] right-[4%] h-[92%] w-auto max-w-none select-none"
           style={{
-            WebkitMaskImage: BASE_FADE,
-            maskImage: BASE_FADE,
+            WebkitMaskImage: fade ? BASE_FADE : undefined,
+            maskImage: fade ? BASE_FADE : undefined,
             transform: "perspective(1400px) rotateY(calc(var(--rx) * 3deg)) rotateX(calc(var(--ry) * -2deg)) translate3d(calc(var(--rx) * -7px), calc(var(--ry) * -5px), 0)",
             transition: "transform 600ms cubic-bezier(0.23,1,0.32,1)",
             willChange: "transform",

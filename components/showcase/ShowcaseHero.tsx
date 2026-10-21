@@ -21,12 +21,16 @@ const POSE = [
 ];
 
 function Count({ to, delay = 0 }: { to: number; delay?: number }) {
-  const [v, setV] = useState(0);
+  // The page is sent with the real number in it, so crawlers, screen readers and anyone without JavaScript see it
+  // rather than a 0. In a browser that allows motion, it is wound back to 0 as the page wakes up and counts up from there
+  // (the block fades in after that, so the reset is not seen).
+  const [v, setV] = useState(to);
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setV(to);
       return;
     }
+    setV(0);
     let raf = 0;
     const t0 = performance.now() + delay;
     const step = (t: number) => {

@@ -83,7 +83,7 @@ export default async function StudyPage({ params }: Params) {
             <BrowserFrame s={s} priority />
           </Reveal>
           <p className="mt-4 text-sm text-ink/65">
-            Homepage as captured on 8 October 2026. RURO did not build this site and has no connection with{" "}
+            Homepage as captured in October 2026. RURO did not build this site and has no connection with{" "}
             {s.person}. The site and image belong to their owner.
           </p>
 

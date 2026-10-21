@@ -128,6 +128,45 @@ export type Study = {
 
 export const studies: Study[] = [
   {
+    slug: "bill-gates",
+    person: "Bill Gates",
+    role: "Co-founder of Microsoft, philanthropist, author",
+    domain: "gatesnotes.com",
+    url: "https://www.gatesnotes.com",
+    image: "/studies/bill-gates.jpg",
+    signature: "Gates Notes",
+    summary: "One of the world’s best-known people writes about the people he meets, the books he reads and the work he is trying to finish.",
+    lesson: "Lead with the work and the people it serves, not the résumé.",
+    palette: [
+      { hex: "#f5f5f7", name: "Cool paper" },
+      { hex: "#000000", name: "Black" },
+    ],
+    design: [
+      { label: "Layout", text: "A full-bleed photograph fills the first screen, with the lead story set on a floating card over it. Below, short sections stack in a plain, single column." },
+      { label: "Type", text: "A serif for headlines and a clean sans for everything else (ABC Marist and Untitled Sans). The wordmark is simply GatesNotes, with no logo mark." },
+      { label: "Imagery", text: "Documentary photography of real people, led by a lead story about a mother and her child. The page runs on dozens of photographs and a single video." },
+      { label: "Colour", text: "A cool, pale grey page with black type. It stays out of the way, so the photographs carry the colour and the emotion." },
+    ],
+    functionality: [
+      "A short menu: Work, Meet Bill, Books and Heroes, plus search",
+      "Work grouped by purpose: save lives, accelerate energy innovation, make AI work for everyone, provide quality education, cure Alzheimer’s",
+      "A newsletter sign-up, repeated several times down the page",
+      "Book reviews, browsable by subject",
+      "A clear route to the Gates Foundation, and to his Microsoft and philanthropy stories",
+    ],
+    luxury: [
+      { title: "Work stated as intentions", text: "The headings are verbs and goals, such as “Save lives”, not job titles or company names. The page says what he is trying to do." },
+      { title: "People before statistics", text: "The lead story is a person, not a number. A face, a name and a story hold attention longer than a figure." },
+      { title: "His own voice", text: "“My newsletter”, “Meet Bill”: the page is written in the first person, so a very public figure still reads as one person writing to you." },
+      { title: "Restraint at scale", text: "With enormous reach and a huge body of work, the site stays calm: pale ground, black type and a few clear choices." },
+    ],
+    borrow: [
+      "Lead with a person or a result, not a list of achievements.",
+      "Write your headings as what you are trying to do.",
+      "Keep the page quiet and let the strongest image or sentence carry it.",
+    ],
+  },
+  {
     slug: "arnold-schwarzenegger",
     person: "Arnold Schwarzenegger",
     role: "Actor, former Governor of California",
@@ -464,7 +503,7 @@ export const journal: Essay[] = [
     date: "2026-10-02",
     tone: "saffron",
     body: [
-      "Look at the people who are known for what they do: founders, authors, athletes, investors. A great many of them keep a website under their own name, even though they could reach millions through platforms they do not own. We study eight of them on our Studies page.",
+      "Look at the people who are known for what they do: founders, authors, athletes, investors. A great many of them keep a website under their own name, even though they could reach millions through platforms they do not own. We study nine of them on our Studies page.",
       "The reason is simple. The more a name is worth, the more it costs to be misunderstood. A site is the cheapest, most durable way to say who you are, in your own words, in an order you chose.",
       "It is also leverage. A site gathers the press, the books, the talks and the companies in one place, so a journalist, an investor or a hiring partner gets the whole picture in minutes instead of assembling it from fragments.",
       "Nothing here needs money first. A clear site costs little next to what a muddled name costs over a career. Start before you are asked to.",
