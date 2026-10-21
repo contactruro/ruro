@@ -33,6 +33,13 @@ export const studio = {
   duration: "Up to 2 weeks",
 };
 
+/* RURO's own profiles, shown in the footer and listed in the structured data so search engines connect them to ruro.in.
+   The founder's personal profile is listed on the founder's own entry (lib/seo.ts). */
+export const socials = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/ruro-in" },
+  { label: "Instagram", href: "https://www.instagram.com/ruro.in" },
+] as const;
+
 /* One primary and one secondary action, used everywhere. */
 export const cta = {
   primary: { label: "Review my online presence", href: "/contact?type=audit" },

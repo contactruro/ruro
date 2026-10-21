@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { footerNav, legalNav, site, studio } from "@/lib/site";
+import { footerNav, legalNav, site, socials, studio } from "@/lib/site";
 import { AnalyticsSettingsButton } from "./Analytics";
 import { Wordmark } from "./ui/Wordmark";
 import { FooterFigure } from "./FooterFigure";
@@ -41,6 +41,16 @@ export function Footer() {
               {site.emailAlt}
             </a>
             <p className="mt-3 max-w-sm text-[#f5efe3]/75">{site.positioning}</p>
+            <ul aria-label="RURO on social media" className="mt-4 flex flex-wrap gap-x-6">
+              {socials.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className="link-underline inline-block py-1.5 text-[#f5efe3]/85 hover:text-[#f5efe3]">
+                    {s.label}
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
           <nav aria-label="Footer" className="grid grid-cols-2 gap-10 md:col-span-5 md:col-start-8 md:justify-items-end">
             <ul className="flex flex-col gap-1">

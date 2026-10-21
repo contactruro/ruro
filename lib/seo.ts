@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { site } from "./site";
+import { site, socials } from "./site";
 
 /* One place for the metadata and structured data every page shares, so titles, canonicals, share cards and JSON-LD
    always agree. Nothing here is shown on the page: it only describes it to search engines and share previews.
@@ -53,6 +53,7 @@ export const siteGraph = {
       logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 1024, height: 1024 },
       image: `${site.url}/logo.png`,
       founder: { "@id": founderId },
+      sameAs: socials.map((s) => s.href),
       serviceType: ["Digital identity", "Personal website design", "Digital estate stewardship"],
       areaServed: "Worldwide",
       knowsAbout: ["Digital identity", "Online reputation", "Personal websites for founders and executives"],
