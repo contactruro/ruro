@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { projects } from "@/lib/projects";
-import { ProjectFrame, ProjectVisitLink } from "@/components/ProjectCard";
+import { ProjectVisitLink } from "@/components/ProjectCard";
+import { ProjectLiveFrame } from "@/components/ProjectLiveFrame";
 import { MaskLines, Reveal } from "@/components/ui/Reveal";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { SkyScene } from "@/components/atelier/Scenes";
@@ -23,6 +24,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title: `${p.name}: a ${p.domain} case study`,
     description: `${p.summary} ${p.role}.`,
     path: `/projects/${p.slug}`,
+    image: { url: p.image, width: 1600, height: 900, alt: p.imageAlt },
   });
 }
 
@@ -79,9 +81,9 @@ export default async function ProjectPage({ params }: Params) {
 
         <div className="container-ed">
           <Reveal>
-            <ProjectFrame p={p} priority />
+            <ProjectLiveFrame p={p} priority />
           </Reveal>
-          <p className="mt-4 text-sm text-ink/65">Homepage as captured in October 2026. {p.permission}</p>
+          <p className="mt-4 text-sm text-ink/65">Homepage as captured in October 2026. Use “Live preview” to see the real site. {p.permission}</p>
 
           <div className="mt-16 md:mt-24">
             <Chapter n="01 · The brief" title="What was needed.">

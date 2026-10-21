@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     title,
     description: `${s.summary} A breakdown of the design, functionality and luxury concept of ${s.domain}.`,
     path: `/work/${s.slug}`,
+    image: { url: s.image, width: s.slug === "bill-gates" ? 1600 : 1200, height: s.slug === "bill-gates" ? 900 : 675, alt: `The homepage of ${s.domain}` },
   });
 }
 

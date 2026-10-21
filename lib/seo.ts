@@ -13,7 +13,7 @@ export const founder = {
 };
 
 /** Page metadata with its canonical address, share card and Twitter card kept consistent. */
-export function pageMeta(o: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean }): Metadata {
+export function pageMeta(o: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean; image?: { url: string; width: number; height: number; alt: string } }): Metadata {
   return {
     // Pages that exist for readers but should not compete in search results (the legal pages) say so here.
     ...(o.noindex ? { robots: { index: false, follow: true } } : {}),
@@ -28,8 +28,9 @@ export function pageMeta(o: { title: string; description: string; path: string; 
       title: `${o.title} · RURO`,
       description: o.description,
       ...(o.publishedTime ? { publishedTime: o.publishedTime } : {}),
+      ...(o.image ? { images: [o.image] } : {}),
     },
-    twitter: { card: "summary_large_image", title: `${o.title} · RURO`, description: o.description },
+    twitter: { card: "summary_large_image", title: `${o.title} · RURO`, description: o.description, ...(o.image ? { images: [o.image.url] } : {}) },
   };
 }
 
