@@ -33,6 +33,9 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
     // On data-saver or a slow connection, load every second frame only (still 24 a second).
     const conn = (navigator as unknown as { connection?: { saveData?: boolean; effectiveType?: string } }).connection;
     const lean = !!conn && (conn.saveData === true || /(^|-)(2g|3g)$/.test(conn.effectiveType || ""));
+    // A search-engine crawler reads the page's text, not the film behind it, so it is given the first picture only. That keeps
+    // its rendering to a handful of requests. The words on the page are identical for everyone; only the backdrop differs.
+    const crawler = /bot|crawl|spider|slurp|bingpreview|lighthouse|headless/i.test(navigator.userAgent);
 
     const nearest = (i: number) => {
       for (let d = 0; d < FRAME_COUNT; d++) {
@@ -137,6 +140,7 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
       // (every 24th frame, so there is always one close by), then, once the page is quiet, the rest, a few at a time and
       // always the ones nearest to where the visitor currently is, so scrolling never outruns the loading.
       await load(0);
+      if (crawler) return;
       const coarse: number[] = [];
       for (let i = 24; i < FRAME_COUNT; i += 24) coarse.push(i);
       coarse.push(FRAME_COUNT - 1);

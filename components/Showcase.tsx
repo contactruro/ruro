@@ -112,7 +112,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
 
   const group = (title: string, items: string[], grow: number) => (
     <section className="flex flex-col" style={{ flexGrow: grow }}>
-      <h3 className="eyebrow border-t border-ink/30 pt-4 text-royal">{title}</h3>
+      <h2 className="eyebrow border-t border-ink/30 pt-4 text-royal">{title}</h2>
       <ul className="flex flex-1 flex-col">
         {items.map((x) => (
           <li key={x} className="flex flex-1 items-center border-t border-ink/15 py-3 text-lg leading-snug first:border-t-0">
@@ -263,7 +263,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
         {isToday && t ? (
           <div className="flex flex-col gap-8">
             <section>
-              <h3 className="eyebrow border-t border-ink/30 pt-4 text-royal">What it is today</h3>
+              <h2 className="eyebrow border-t border-ink/30 pt-4 text-royal">What it is today</h2>
               <p className="mt-3 text-lg leading-snug">{t.summary}</p>
             </section>
             {group("What works", t.works, t.works.length)}
@@ -272,7 +272,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
         ) : c.design ? (
           <div className="flex flex-col gap-8">
             <section>
-              <h3 className="eyebrow border-t border-ink/30 pt-4 text-royal">What this design is</h3>
+              <h2 className="eyebrow border-t border-ink/30 pt-4 text-royal">What this design is</h2>
               <p className="mt-3 text-lg leading-snug">{c.design.what}</p>
               <p className="mt-3 text-sm leading-relaxed text-ink/70">
                 {c.design.reference ? (
@@ -290,7 +290,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
             </section>
 
             <section>
-              <h3 className="eyebrow border-t border-ink/30 pt-4 text-royal">Why we designed it this way</h3>
+              <h2 className="eyebrow border-t border-ink/30 pt-4 text-royal">Why we designed it this way</h2>
               <ul>
                 {c.design.why.map((w) => (
                   <li key={w.on} className="border-t border-ink/15 py-3 first:border-t-0">
@@ -302,7 +302,7 @@ function Panel({ c, i, intro, onIntroDone }: { c: Concept; i: number; intro: boo
             </section>
 
             <section>
-              <h3 className="eyebrow border-t border-ink/30 pt-4 text-royal">How it matches {first}</h3>
+              <h2 className="eyebrow border-t border-ink/30 pt-4 text-royal">How it matches {first}</h2>
               <ul>
                 {c.design.fit.map((f) => (
                   <li key={f.trait} className="grid gap-1 border-t border-ink/15 py-3 first:border-t-0 sm:grid-cols-[10rem_1fr] sm:gap-4">

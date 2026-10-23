@@ -29,9 +29,18 @@ export function fitDescription(text: string): string {
   return d;
 }
 
+/* The site's share card (app/opengraph-image.jpg): Athena before the golden sun, with what RURO does and what makes it different.
+   A page that has no picture of its own (every page except the case studies and studies) shares this one. */
+const SHARE_CARD = {
+  url: "/opengraph-image.jpg",
+  width: 1200,
+  height: 630,
+  alt: "RURO: Your only digital house that tells your story in your way. A marble statue of Athena stands before a golden sun.",
+};
+
 /** Page metadata with its canonical address, share card and Twitter card kept consistent. */
 export function pageMeta(raw: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean; image?: { url: string; width: number; height: number; alt: string } }): Metadata {
-  const o = { ...raw, description: fitDescription(raw.description) };
+  const o = { ...raw, description: fitDescription(raw.description), image: raw.image ?? SHARE_CARD };
   return {
     // Pages that exist for readers but should not compete in search results (the legal pages) say so here.
     ...(o.noindex ? { robots: { index: false, follow: true } } : {}),
@@ -46,9 +55,9 @@ export function pageMeta(raw: { title: string; description: string; path: string
       title: `${o.title} · RURO`,
       description: o.description,
       ...(o.publishedTime ? { publishedTime: o.publishedTime } : {}),
-      ...(o.image ? { images: [o.image] } : {}),
+      images: [o.image],
     },
-    twitter: { card: "summary_large_image", title: `${o.title} · RURO`, description: o.description, ...(o.image ? { images: [o.image.url] } : {}) },
+    twitter: { card: "summary_large_image", title: `${o.title} · RURO`, description: o.description, images: [o.image.url] },
   };
 }
 
