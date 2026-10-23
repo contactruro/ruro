@@ -58,11 +58,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
+  const reviewPage = { url: `${site.url}/contact?type=audit`, lastModified: UPDATED.contact, changeFrequency: "monthly" as const, priority: 0.7 };
   const servicePages = services.map((s) => ({
     url: `${site.url}/services/${s.slug}`,
     lastModified: UPDATED.service,
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
-  return [...pages, ...servicePages, ...projectPages, ...essays, ...studyPages];
+  return [...pages, reviewPage, ...servicePages, ...projectPages, ...essays, ...studyPages];
 }

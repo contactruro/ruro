@@ -10,6 +10,10 @@ export type Service = {
   slug: string;
   n: string;
   name: string;
+  /** The words people search for, used as the page's title in search results. */
+  seoTitle: string;
+  /** A short phrase shown beside the service number on its page. */
+  topic: string;
   /** One plain sentence: what it is. */
   line: string;
   /** A fuller description for the page and its search snippet. */
@@ -32,6 +36,8 @@ export const services: Service[] = [
     slug: "personal-website",
     n: "01",
     name: "Your website",
+    topic: "Personal website design",
+    seoTitle: "Personal website design for founders and executives",
     line: "A personal website, written, designed and built around you, at your own address.",
     description:
       "RURO designs, writes and builds your personal website: your story written with you, a design made only for you, and a site you can edit, at your own address.",
@@ -44,6 +50,8 @@ export const services: Service[] = [
     slug: "blog",
     n: "02",
     name: "A blog, on your own site",
+    topic: "Blog on your own site",
+    seoTitle: "A blog on your own personal website",
     line: "A place for your essays, talks and news, so your ideas live where you own them.",
     description:
       "A blog on your own personal website: your essays, talks and interviews in one place, under your name and easy to publish to. Built by RURO.",
@@ -55,6 +63,8 @@ export const services: Service[] = [
     slug: "personal-branding",
     n: "03",
     name: "Personal branding",
+    topic: "Personal branding",
+    seoTitle: "Personal branding for founders and executives",
     line: "Setting up how you appear online: a clear name, story and photograph, kept consistent where people look you up.",
     description:
       "RURO sets up how you appear online: your profile, one story across every place people look you up, all pointing home. We do not manage social media.",
@@ -66,6 +76,8 @@ export const services: Service[] = [
     slug: "stewardship",
     n: "04",
     name: "Stewardship and upkeep",
+    topic: "Website upkeep",
+    seoTitle: "Personal website maintenance and upkeep",
     line: "After launch we keep it safe, current and working, so it never goes stale.",
     description:
       "Ongoing care for your personal website: kept secure and running, your news and articles added, and regular checks on how you show up online.",
@@ -77,6 +89,8 @@ export const services: Service[] = [
     slug: "online-presence-review",
     n: "05",
     name: audit.title,
+    topic: "Online presence review",
+    seoTitle: "Online presence review: what people find about you",
     line: audit.summary,
     description: `${audit.summary} A good first step.`,
     scene: "medusa",

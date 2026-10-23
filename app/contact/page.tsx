@@ -6,12 +6,24 @@ import { MaskLines } from "@/components/ui/Reveal";
 import { audit } from "@/lib/content";
 import { site, studio } from "@/lib/site";
 
-export const metadata: Metadata = pageMeta({
-  title: "Start a conversation",
-  description:
-    "Ask RURO for an online presence review, or tell us about the personal website you want. Every enquiry is read personally.",
-  path: "/contact",
-});
+/* /contact and /contact?type=audit are two different pages (the second leads with the online presence review), so each has its own
+   title, description and address. Without this, search engines see two pages with the same title and have to pick one. */
+export async function generateMetadata({ searchParams }: { searchParams: Promise<{ type?: string }> }): Promise<Metadata> {
+  const { type } = await searchParams;
+  if (type === "audit") {
+    return pageMeta({
+      title: "Request an online presence review",
+      description: `${audit.summary} Ask for yours here.`,
+      path: "/contact?type=audit",
+    });
+  }
+  return pageMeta({
+    title: "Start a conversation",
+    description:
+      "Ask RURO for an online presence review, or tell us about the personal website you want. Every enquiry is read personally.",
+    path: "/contact",
+  });
+}
 
 const steps = [
   ["01", "We read your enquiry ourselves."],

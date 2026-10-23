@@ -9,9 +9,9 @@ import { SkyScene } from "@/components/atelier/Scenes";
 import { studies } from "@/lib/content";
 
 export const metadata: Metadata = pageMeta({
-  title: "Estates we study",
+  title: "Personal website examples from founders and investors",
   description:
-    "Nine personal websites by founders, investors and authors, from gatesnotes.com to nav.al, broken down by design, functionality and sense of luxury.",
+    "Nine personal website examples by founders, investors and authors, from gatesnotes.com to nav.al, broken down by design and what makes each premium.",
   path: "/work",
 });
 

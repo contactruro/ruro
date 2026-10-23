@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug } = await params;
   const s = services.find((x) => x.slug === slug);
   if (!s) return {};
-  return pageMeta({ title: `${s.name}: a RURO service`, description: s.description, path: `/services/${s.slug}` });
+  return pageMeta({ title: s.seoTitle, description: s.description, path: `/services/${s.slug}` });
 }
 
 /* One numbered chapter: label on the left, content on the right (the same as the case studies). */
@@ -67,7 +67,7 @@ export default async function ServicePage({ params }: Params) {
       <PageHeader
         tone="peach"
         scene={s.scene}
-        eyebrow={`Service ${s.n}`}
+        eyebrow={`Service ${s.n} · ${s.topic}`}
         lines={[s.name]}
         intro={<p>{s.line}</p>}
       />
