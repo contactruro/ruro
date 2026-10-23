@@ -140,7 +140,7 @@ export function ShowcaseHero() {
                   <span className="relative block aspect-[4/5] overflow-hidden border border-ink/30 bg-ink shadow-[0_30px_60px_-30px_rgba(20,22,43,0.6)] transition-transform duration-500 ease-out group-hover:scale-[1.06] group-hover:[transform:rotate(0deg)_scale(1.06)] group-focus-visible:scale-[1.06]">
                     {c.photo && (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img loading="lazy" decoding="async" src={c.photo.src} alt="" className="absolute inset-0 size-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105" />
+                      <img loading="lazy" decoding="async" src={c.photo.src} alt={`${c.person}, photograph`} className="absolute inset-0 size-full object-cover object-[50%_18%] transition-transform duration-700 group-hover:scale-105" />
                     )}
                     <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
                     <span className="absolute left-3 top-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-white/80">0{i + 1}</span>

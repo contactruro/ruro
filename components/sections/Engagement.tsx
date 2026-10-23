@@ -27,6 +27,7 @@ import { cta, studio } from "@/lib/site";
 import { track } from "@/lib/analytics";
 import { Button } from "../ui/Button";
 import { MaskLines, Reveal } from "../ui/Reveal";
+import { artAlt } from "@/lib/altText";
 
 /* How the work runs, told as a story in two acts. Act one is a dark royal stage: four steps you can tap (or let
    play), a 14-day ruler whose lit stretch slides to the days of the open step, and for each step a sculpture, the
@@ -136,7 +137,7 @@ function Flow({ nodes }: { nodes: FlowNode[] }) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`${ART}/${n.art}.webp`}
-                alt=""
+                alt={artAlt(`${ART}/${n.art}.webp`)}
                 loading="lazy"
                 draggable={false}
                 className="jr-float h-full w-auto max-w-full object-contain drop-shadow-[0_10px_10px_rgba(58,16,24,0.35)]"
@@ -184,7 +185,7 @@ function BuildBars() {
               ))}
               <span aria-hidden className="ride absolute -top-9 left-0 block h-11 w-14" style={{ "--d": `${k * 0.35}s` } as CSSProperties}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={`${ART}/${r.art}.webp`} alt="" loading="lazy" draggable={false} className="size-full -translate-x-1/2 object-contain drop-shadow-[0_6px_6px_rgba(58,16,24,0.35)]" />
+                <img src={`${ART}/${r.art}.webp`} alt={artAlt(`${ART}/${r.art}.webp`)} loading="lazy" draggable={false} className="size-full -translate-x-1/2 object-contain drop-shadow-[0_6px_6px_rgba(58,16,24,0.35)]" />
               </span>
             </div>
           </li>
@@ -234,11 +235,11 @@ function LaunchView() {
             </p>
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${ART}/bust-headphones.webp`} alt="" loading="lazy" draggable={false} className="pop h-28 w-auto object-contain drop-shadow-[0_10px_10px_rgba(58,16,24,0.3)] sm:h-32" style={{ "--d": "1.9s" } as CSSProperties} />
+          <img src={`${ART}/bust-headphones.webp`} alt={artAlt(`${ART}/bust-headphones.webp`)} loading="lazy" draggable={false} className="pop h-28 w-auto object-contain drop-shadow-[0_10px_10px_rgba(58,16,24,0.3)] sm:h-32" style={{ "--d": "1.9s" } as CSSProperties} />
         </div>
         <div className="flex items-center justify-center gap-4 border-t-2 border-royal/20 bg-royal/5 px-4 py-3">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`${ART}/gold-sun.webp`} alt="" loading="lazy" draggable={false} className="sun-turn size-9 object-contain" />
+          <img src={`${ART}/gold-sun.webp`} alt={artAlt(`${ART}/gold-sun.webp`)} loading="lazy" draggable={false} className="sun-turn size-9 object-contain" />
           <span className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-royal">Day 14 · your home is open</span>
         </div>
       </div>
@@ -386,11 +387,11 @@ export function Engagement() {
           <div id="step-panel" role="region" aria-live="polite" aria-label={`Step ${stage.n}: ${stage.title}`} className="mt-8 grid gap-4 md:grid-cols-5 xl:grid-cols-12 xl:gap-5">
             <div key={`fig-${i}`} aria-hidden className="relative h-80 overflow-hidden border-2 border-[#e6c27a]/60 bg-[radial-gradient(ellipse_at_50%_30%,#2e4163,#17233b_70%)] md:col-span-2 md:h-auto md:min-h-[30rem] xl:col-span-3 xl:min-h-[36rem]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img loading="lazy" decoding="async" src="/art/myth/clouds-a.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-6%] w-[120%] opacity-50 cloud-feather" />
+              <img loading="lazy" decoding="async" src="/art/myth/clouds-a.webp" alt={artAlt("/art/myth/clouds-a.webp")} draggable={false} className="absolute inset-x-[-10%] bottom-[-6%] w-[120%] opacity-50 cloud-feather" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img loading="lazy" decoding="async"
                 src={FIGURES[i]}
-                alt=""
+                alt={artAlt(FIGURES[i])}
                 draggable={false}
                 className="step-figure absolute inset-x-2 bottom-0 top-10 mx-auto h-[calc(100%-2.5rem)] w-[calc(100%-1rem)] object-contain object-bottom drop-shadow-[0_20px_20px_rgba(0,0,0,0.5)]"
               />
@@ -473,12 +474,12 @@ export function Engagement() {
           <div className="mt-8 grid gap-5 lg:grid-cols-12 lg:gap-8">
             <div aria-hidden className="relative h-[26rem] overflow-hidden border-2 border-royal bg-[radial-gradient(ellipse_at_50%_30%,#2e4163,#17233b_72%)] sm:h-96 lg:col-span-5 lg:h-auto lg:min-h-[40rem]">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img loading="lazy" decoding="async" src="/art/myth/clouds-b.webp" alt="" draggable={false} className="absolute inset-x-[-10%] bottom-[-8%] w-[120%] opacity-50 cloud-feather" />
+              <img loading="lazy" decoding="async" src="/art/myth/clouds-b.webp" alt={artAlt("/art/myth/clouds-b.webp")} draggable={false} className="absolute inset-x-[-10%] bottom-[-8%] w-[120%] opacity-50 cloud-feather" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img loading="lazy" decoding="async"
                 key={ring}
                 src={KEEP_FIGURES[ring]}
-                alt=""
+                alt={artAlt(KEEP_FIGURES[ring])}
                 draggable={false}
                 className="step-figure absolute inset-x-2 bottom-0 top-10 mx-auto h-[calc(100%-2.5rem)] w-[calc(100%-1rem)] object-contain object-bottom drop-shadow-[0_22px_22px_rgba(0,0,0,0.5)]"
               />

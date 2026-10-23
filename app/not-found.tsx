@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
-    <section className="flex min-h-dvh items-center pt-24">
+    <section className="flex min-h-dvh items-center overflow-x-clip pt-24">
       <div className="container-ed grid items-center gap-12 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <p className="eyebrow text-accent">Error 404</p>

@@ -1,3 +1,4 @@
+import { artAlt } from "@/lib/altText";
 /* A hanging velvet drape, from the art direction reference, feathered into the page. It hangs from the top edge
    of a section, on either side, and sways a fraction of a degree (a very slow CSS motion that stops under
    reduced motion). Decorative: it never sits over copy, and is hidden from assistive technology. */
@@ -14,7 +15,7 @@ export function Drape({ side = "right", className = "" }: { side?: "left" | "rig
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={SRC[side]}
-        alt=""
+        alt={artAlt(SRC[side])}
         decoding="async"
         loading="lazy"
         className="h-full w-full object-cover"

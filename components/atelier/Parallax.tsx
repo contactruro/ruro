@@ -2,6 +2,7 @@
 
 import { createContext, useContext, useEffect, useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "motion/react";
+import { artAlt } from "@/lib/altText";
 
 /* A parallax scene: a set of cutout objects (statues, clouds, angels, hands) at different depths.
 
@@ -125,7 +126,7 @@ export function Layer({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt=""
+          alt={artAlt(src)}
           loading="lazy"
           decoding="async"
           draggable={false}

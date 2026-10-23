@@ -19,12 +19,12 @@ const FinalCta = dynamic(() => import("@/components/sections/FinalCta").then((m)
    and what it costs, who does it, proof of taste, questions, the ask. */
 export const metadata: Metadata = {
   ...pageMeta({
-    title: "RURO · Digital identity studio for founders and executives",
+    title: "RURO — Digital Identity Studio for Founders & Professionals",
     description:
       "RURO is a digital identity studio. We design, write, build and maintain personal websites for founders, executives and established professionals in India and worldwide.",
     path: "/",
   }),
-  title: { absolute: "RURO · Digital identity studio for founders and executives" },
+  title: { absolute: "RURO — Digital Identity Studio for Founders & Professionals" },
 };
 
 export default function Home() {

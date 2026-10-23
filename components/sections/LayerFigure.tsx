@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { artAlt } from "@/lib/altText";
 
 /* The picture on each layer's card: one large sculpture standing on a bank of clouds, with the layer's three key
    words in a row beneath it (never over it). Choosing another layer turns the card's picture like a page in
@@ -24,7 +25,7 @@ export function LayerFigure({ index }: { index: number }) {
   return (
     <div className="relative flex h-full w-full flex-col [perspective:1400px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" src="/art/myth/cloud-soft.webp" alt="" draggable={false} className="cloud-feather pointer-events-none absolute inset-x-[-12%] bottom-10 w-[124%] opacity-60" />
+      <img loading="lazy" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} draggable={false} className="cloud-feather pointer-events-none absolute inset-x-[-12%] bottom-10 w-[124%] opacity-60" />
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -38,7 +39,7 @@ export function LayerFigure({ index }: { index: number }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img loading="lazy" decoding="async"
               src={f.src}
-              alt=""
+              alt={artAlt(f.src)}
               draggable={false}
               className="jr-float absolute inset-x-0 -top-[8%] mx-auto h-[108%] w-auto max-w-full object-contain object-bottom drop-shadow-[0_24px_24px_rgba(0,0,0,0.45)]"
               style={{ "--fa": "7px" } as React.CSSProperties}

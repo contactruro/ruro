@@ -11,6 +11,7 @@ import { Marquee } from "@/components/journal/Marquee";
 import { EssayIndex } from "@/components/journal/EssayIndex";
 import { ScrubText } from "@/components/journal/ScrubText";
 import { ReadProgress } from "@/components/journal/ReadProgress";
+import { artAlt } from "@/lib/altText";
 
 export const metadata: Metadata = pageMeta({
   title: "The Journal",
@@ -57,7 +58,7 @@ export default function JournalPage() {
       <section aria-labelledby="policy-title" className="relative overflow-hidden bg-royal text-paper">
         {/* the scales: nothing is published until it is weighed and agreed */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" decoding="async" src="/art/myth/scales.webp" alt="" aria-hidden draggable={false} className="jr-float pointer-events-none absolute bottom-0 right-[3%] hidden h-[88%] w-auto opacity-90 mix-blend-screen md:block" style={{ "--fa": "6px" } as React.CSSProperties} />
+        <img loading="lazy" decoding="async" src="/art/myth/scales.webp" alt={artAlt("/art/myth/scales.webp")} aria-hidden draggable={false} className="jr-float pointer-events-none absolute bottom-0 right-[3%] hidden h-[88%] w-auto opacity-90 mix-blend-screen md:block" style={{ "--fa": "6px" } as React.CSSProperties} />
         <div className="container-ed relative z-10 grid grid-cols-1 gap-8 py-16 md:grid-cols-12 md:py-24">
           <h2 id="policy-title" className="font-mono text-[0.6875rem] uppercase tracking-[0.18em] text-[#e6c27a] md:col-span-3">
             Our discretion policy
@@ -68,7 +69,7 @@ export default function JournalPage() {
             </p>
             <p className="mt-6 text-base text-paper/80">
               Questions before you enquire?{" "}
-              <a href={`mailto:${site.email}`} className="link-underline text-paper">
+              <a href={`mailto:${site.email}`} className="link-underline inline-block py-2 text-paper">
                 {site.email}
               </a>
             </p>
@@ -86,7 +87,7 @@ export default function JournalPage() {
             Write to the editors, or begin a conversation about your own estate.
           </h2>
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-8">
-            <a href={`mailto:${site.email}`} className="link-underline text-lg text-ink transition-colors duration-500 hover:text-accent">
+            <a href={`mailto:${site.email}`} className="link-underline inline-block py-2 text-lg text-ink transition-colors duration-500 hover:text-accent">
               {site.email}
             </a>
             <span aria-hidden className="hidden h-4 w-px bg-ink/20 sm:block" />

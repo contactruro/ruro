@@ -7,6 +7,7 @@ import { cta } from "@/lib/site";
 import { Button } from "../ui/Button";
 import { SkyScene } from "../atelier/Scenes";
 import { EASE, Reveal } from "../ui/Reveal";
+import { artAlt } from "@/lib/altText";
 
 /* The process as a plain flow chart, for readers who want the steps rather than the story.
    Horizontal on large screens, a vertical track on small ones. Diamonds mark your approvals. */
@@ -83,9 +84,9 @@ export function ProcessTimeline() {
                 <Reveal delay={0.15 + i * 0.12} className="lg:mt-8">
                   <div aria-hidden className="relative mb-5 flex h-44 items-end justify-center overflow-hidden border border-accent/25 bg-[radial-gradient(ellipse_at_50%_80%,#f1dedc,transparent_70%)] lg:h-52">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/art/myth/cloud-soft.webp" alt="" loading="lazy" draggable={false} className="cloud-feather absolute inset-x-[-12%] bottom-[-10%] w-[124%] opacity-70" />
+                    <img src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} loading="lazy" draggable={false} className="cloud-feather absolute inset-x-[-12%] bottom-[-10%] w-[124%] opacity-70" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={STEP_ART[i].src} alt="" loading="lazy" draggable={false} className="jr-float relative h-[92%] w-auto max-w-[80%] object-contain object-bottom drop-shadow-[0_14px_14px_rgba(60,20,25,0.3)]" style={{ "--fd": `${i * -1.4}s`, "--fa": "6px" } as React.CSSProperties} />
+                    <img src={STEP_ART[i].src} alt={artAlt(STEP_ART[i].src)} loading="lazy" draggable={false} className="jr-float relative h-[92%] w-auto max-w-[80%] object-contain object-bottom drop-shadow-[0_14px_14px_rgba(60,20,25,0.3)]" style={{ "--fd": `${i * -1.4}s`, "--fa": "6px" } as React.CSSProperties} />
                     <span className="absolute left-2 top-2 bg-accent px-2 py-0.5 font-mono text-[0.6875rem] font-bold uppercase tracking-[0.18em] text-paper">{STEP_ART[i].tag}</span>
                   </div>
                   <p className="pt-3 font-mono text-[0.6875rem] uppercase tracking-[0.16em] text-ink/65 lg:pt-0">{s.when}</p>

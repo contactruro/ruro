@@ -78,7 +78,7 @@ export function StudiesDeck() {
                   <span className="flex-1 truncate bg-paper px-2 py-0.5 text-center font-mono text-[0.6875rem] text-ink/70">{s.domain}</span>
                 </div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={s.image} alt={off === 0 ? `${s.person}’s homepage, ${s.domain}` : ""} className="h-[calc(100%-2rem)] w-full object-cover object-top" loading="lazy" />
+                <img src={s.image} alt={`${s.person}’s homepage, ${s.domain}`} className="h-[calc(100%-2rem)] w-full object-cover object-top" loading="lazy" />
               </figure>
             );
           })}

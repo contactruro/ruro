@@ -3,6 +3,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import type { CSSProperties } from "react";
 import { GlobeSimple, InstagramLogo, LinkedinLogo, Newspaper, XLogo, YoutubeLogo } from "@phosphor-icons/react";
+import { artAlt } from "@/lib/altText";
 
 /* The masthead. The title is huge and still. On either side a sculpture stands on the floor of the page, and
    around each float the places a name is scattered across the web: LinkedIn, Instagram, a website, X, YouTube,
@@ -47,7 +48,7 @@ function Side({ src, medals, side }: { src: string; medals: Medal[]; side: "l" |
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
-        alt=""
+        alt={artAlt(src)}
         loading="lazy"
         draggable={false}
         className={`absolute bottom-0 h-[92%] w-auto max-w-[56%] object-contain object-bottom drop-shadow-[0_24px_24px_rgba(60,30,20,0.35)] ${side === "l" ? "left-[38%]" : "right-[38%]"}`}

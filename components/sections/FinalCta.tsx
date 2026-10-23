@@ -4,6 +4,7 @@ import { CloudBank } from "../atelier/CloudBank";
 import { MaskLines, Reveal } from "../ui/Reveal";
 import { cta } from "@/lib/site";
 import { HomeJourney, type JourneyVariant } from "./HomeJourney";
+import { artAlt } from "@/lib/altText";
 
 /* The close, told as one picture: a figure carrying their story walks to a temple that becomes their home. The
    text sits first on a phone and the picture below it; on a desktop they sit side by side. Clouds along the foot keep it in the same world as the rest of the site. */
@@ -27,7 +28,7 @@ export function FinalCta({ variant = "walk" }: { variant?: JourneyVariant }) {
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={`/art/myth/${b.src}.webp`}
-        alt=""
+        alt={artAlt(`/art/myth/${b.src}.webp`)}
         aria-hidden
         loading="lazy"
         draggable={false}

@@ -86,7 +86,7 @@ export function Preloader() {
   return (
     <div className={`preloader ${done ? "is-done" : ""}`} role="status" aria-live="polite" aria-label={`Loading, ${pct} percent`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img className="preloader__img" src="/loader/ruro-1920.webp" srcSet="/loader/ruro-960.webp 960w, /loader/ruro-1920.webp 1920w" sizes="100vw" alt="" fetchPriority="high" decoding="async" />
+      <img className="preloader__img" src="/loader/ruro-1920.webp" srcSet="/loader/ruro-960.webp 960w, /loader/ruro-1920.webp 1920w" sizes="100vw" alt="RURO.IN, reputation uniquely represented online. A reclining figure holds out a phone toward a reaching hand, in the manner of Michelangelo’s Creation of Adam, in black and white." fetchPriority="high" decoding="async" />
       <div aria-hidden className="preloader__scrim" />
       <div className="preloader__count" aria-hidden>
         <span>{pct}</span>

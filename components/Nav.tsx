@@ -84,7 +84,7 @@ export function Nav() {
             <Wordmark className="text-[1.65rem] leading-none" />
           </Link>
 
-          <ul className="hidden items-center gap-4 xl:gap-8 lg:flex">
+          <ul className="hidden items-center gap-4 xl:gap-6 2xl:gap-8 lg:flex">
             {nav.map((item, idx) => {
               const active = isActive(item.href);
               return (
@@ -104,7 +104,7 @@ export function Nav() {
                           : "border-transparent text-ink/75 hover:text-ink"
                     }`}
                   >
-                    <span className="mr-1.5 hidden opacity-50 xl:inline">0{idx + 1}</span>
+                    <span className="mr-1.5 hidden opacity-50 2xl:inline">0{idx + 1}</span>
                     {item.label}
                   </Link>
                 </li>

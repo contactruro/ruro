@@ -7,6 +7,7 @@ import { Audience } from "@/components/sections/Audience";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { site, studio } from "@/lib/site";
+import { artAlt } from "@/lib/altText";
 
 export const metadata: Metadata = pageMeta({
   title: "About",
@@ -60,7 +61,7 @@ export default function AboutPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/art/myth/${p.art}.webp`}
-                  alt=""
+                  alt={artAlt(`/art/myth/${p.art}.webp`)}
                   aria-hidden
                   loading="lazy"
                   draggable={false}

@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { CloudBank } from "./CloudBank";
+import { artAlt } from "@/lib/altText";
 
 /* One picture for "the problem": the two hands of the Creation, a hair's breadth apart. Nothing else competes
    with them. Clouds come up out of the gap between the fingertips and drift away, one after another, so it reads
@@ -48,7 +49,7 @@ export function HandsStage({ className = "" }: { className?: string }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/art/myth/hands-touch.webp"
-          alt=""
+          alt={artAlt("/art/myth/hands-touch.webp")}
           loading="lazy"
           decoding="async"
           draggable={false}

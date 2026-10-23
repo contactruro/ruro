@@ -59,7 +59,7 @@ export default async function StudyPage({ params }: Params) {
       <article className="relative isolate">
         <SkyScene variant="d" behind />
         <header className="container-ed pb-14 pt-32 md:pt-44">
-          <Link href="/work" className="group inline-flex items-center gap-2 text-sm text-ink/65 hover:text-ink">
+          <Link href="/work" className="group inline-flex items-center gap-2 py-2 text-sm text-ink/65 hover:text-ink">
             <ArrowLeft aria-hidden className="size-4 transition-transform duration-500 group-hover:-translate-x-1" />
             All studies
           </Link>

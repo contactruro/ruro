@@ -155,7 +155,7 @@ export function EssayIndex({ essays }: { essays: E[] }) {
           </div>
         </div>
 
-        <ol className="lg:col-span-7">
+        <ol className="overflow-x-clip lg:col-span-7">
           {essays.map((e, i) => (
             <Row key={e.slug} e={e} i={i} active={i === a} onActive={setA} />
           ))}

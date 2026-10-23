@@ -5,6 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { audience, notFor } from "@/lib/content";
 import { SectionLabel } from "../ui/SectionLabel";
 import { EASE, MaskLines, Reveal } from "../ui/Reveal";
+import { artAlt } from "@/lib/altText";
 
 const wingPath =
   "M20 20 C 12 4, 0 4, 3 14 C 5 20, 13 21, 20 20 Z M20 20 C 28 4, 40 4, 37 14 C 35 20, 27 21, 20 20 Z M20 21 C 13 24, 6 32, 11 35 C 15 37, 18 30, 20 21 Z M20 21 C 27 24, 34 32, 29 35 C 25 37, 22 30, 20 21 Z";
@@ -74,7 +75,7 @@ export function Audience({ n = "08" }: { n?: string }) {
                       style={{ transformOrigin: "50% 100%" }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img loading="lazy" decoding="async" src={`/art/myth/${POP[a].src}.webp`} alt="" draggable={false} className={`${POP[a].h} w-auto max-w-none drop-shadow-[0_18px_18px_rgba(60,20,25,0.35)]`} />
+                      <img loading="lazy" decoding="async" src={`/art/myth/${POP[a].src}.webp`} alt={artAlt(`/art/myth/${POP[a].src}.webp`)} draggable={false} className={`${POP[a].h} w-auto max-w-none drop-shadow-[0_18px_18px_rgba(60,20,25,0.35)]`} />
                     </motion.span>
                   )}
                 </AnimatePresence>

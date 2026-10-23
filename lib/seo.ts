@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site, socials } from "./site";
+import { services } from "./services";
 
 /* One place for the metadata and structured data every page shares, so titles, canonicals, share cards and JSON-LD
    always agree. Nothing here is shown on the page: it only describes it to search engines and share previews.
@@ -51,6 +52,15 @@ export const siteGraph = {
       slogan: site.tagline,
       description: site.description,
       email: site.email,
+      contactPoint: { "@type": "ContactPoint", contactType: "customer support", email: site.email, availableLanguage: "English" },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "RURO services",
+        itemListElement: services.map((s) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: s.name, description: s.line, url: `${site.url}/services/${s.slug}` },
+        })),
+      },
       logo: { "@type": "ImageObject", url: `${site.url}/logo.png`, width: 1024, height: 1024 },
       image: `${site.url}/logo.png`,
       founder: { "@id": founderId },

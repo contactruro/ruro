@@ -55,7 +55,7 @@ export default async function EssayPage({ params }: Params) {
       <article>
         <header className={`${tone.cls} ${tone.wash} ${tone.text} pb-20 pt-36 md:pb-28 md:pt-48`}>
           <div className="container-ed">
-            <Link href="/journal" className="eyebrow inline-flex items-center gap-2 opacity-80 hover:opacity-100">
+            <Link href="/journal" className="eyebrow inline-flex items-center gap-2 py-2 opacity-80 hover:opacity-100">
               <ArrowLeft aria-hidden className="size-4" /> Journal
             </Link>
             <h1 className="display mt-10 max-w-5xl text-[clamp(2.75rem,6.4vw,6.5rem)]">

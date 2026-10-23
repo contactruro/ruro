@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 import { journal, studies } from "@/lib/content";
 import { projects } from "@/lib/projects";
+import { services } from "@/lib/services";
 import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ["", "/sample", "/work", "/projects", "/process", "/journal", "/about", "/contact"].map((p) => ({
+  const pages = ["", "/sample", "/work", "/projects", "/services", "/process", "/journal", "/about", "/contact"].map((p) => ({
     url: `${site.url}${p}`,
     changeFrequency: "monthly" as const,
     priority: p === "" ? 1 : 0.8,
@@ -25,5 +26,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "yearly" as const,
     priority: 0.7,
   }));
-  return [...pages, ...projectPages, ...essays, ...studyPages];
+  const servicePages = services.map((s) => ({
+    url: `${site.url}/services/${s.slug}`,
+    changeFrequency: "yearly" as const,
+    priority: 0.7,
+  }));
+  return [...pages, ...servicePages, ...projectPages, ...essays, ...studyPages];
 }

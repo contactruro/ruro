@@ -40,7 +40,7 @@ export function ProjectVisitLink({ p, className = "" }: { p: Project; className?
       href={p.url}
       target="_blank"
       rel="noopener noreferrer nofollow"
-      className={`group inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-accent ${className}`}
+      className={`group inline-flex items-center gap-2 py-2 font-mono text-xs uppercase tracking-[0.14em] text-accent ${className}`}
     >
       <span className="link-underline">Visit {p.domain}</span>
       <ArrowUpRight aria-hidden className="size-4 transition-transform duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

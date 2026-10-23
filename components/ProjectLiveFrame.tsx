@@ -43,7 +43,7 @@ export function ProjectLiveFrame({ p, priority = false }: { p: Project; priority
           aria-pressed={live}
           data-track="project_live_preview"
           data-track-slug={p.slug}
-          className="whitespace-nowrap rounded-md px-2.5 py-1 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink ring-1 ring-ink/30 transition-colors duration-300 hover:bg-ink hover:text-paper"
+          className="whitespace-nowrap rounded-md px-2.5 py-2 font-mono text-[0.6875rem] uppercase tracking-[0.14em] text-ink ring-1 ring-ink/30 transition-colors duration-300 hover:bg-ink hover:text-paper"
         >
           {live ? "Show image" : "Live preview"}
         </button>

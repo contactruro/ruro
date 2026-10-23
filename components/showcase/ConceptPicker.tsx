@@ -25,7 +25,7 @@ export function ConceptPicker({ index, onPick }: { index: number; onPick: (i: nu
             <span className="relative size-12 flex-none overflow-hidden rounded-full border border-current/30 md:size-14">
               {x.photo && (
                 // eslint-disable-next-line @next/next/no-img-element
-                <img loading="lazy" decoding="async" src={x.photo.src} alt="" className={`size-full object-cover object-[50%_18%] transition-all duration-500 ${on ? "" : "grayscale group-hover:grayscale-0"}`} />
+                <img loading="lazy" decoding="async" src={x.photo.src} alt={`${x.person}, photograph`} className={`size-full object-cover object-[50%_18%] transition-all duration-500 ${on ? "" : "grayscale group-hover:grayscale-0"}`} />
               )}
             </span>
             <span className="min-w-0">

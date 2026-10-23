@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
+import { artAlt } from "@/lib/altText";
 
 /* The picture on each essay's plate, in the manner of a royal court: a gold sun turns slowly behind a sculpture that
    stands on a bank of cloud, a gilded tablet carries the essay's Roman numeral, a pair of lanterns sways from the
@@ -32,11 +33,11 @@ export function EssayArt({ index, slug }: { index: number; tone?: Tone; slug?: s
     <div aria-hidden className="relative h-full w-full">
       {/* the sun behind the figure */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src={`${A}/gold-sun.webp`} alt="" draggable={false} className={`absolute left-1/2 top-[54%] aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 object-contain opacity-80 ${reduce ? "" : "sun-turn"}`} />
+      <img loading="lazy" decoding="async" src={`${A}/gold-sun.webp`} alt={artAlt(`${A}/gold-sun.webp`)} draggable={false} className={`absolute left-1/2 top-[54%] aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 object-contain opacity-80 ${reduce ? "" : "sun-turn"}`} />
 
       {/* the cloud it stands on */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src={`${A}/cloud-soft.webp`} alt="" draggable={false} className="cloud-feather absolute inset-x-[-8%] bottom-[-6%] w-[116%] opacity-85" />
+      <img loading="lazy" decoding="async" src={`${A}/cloud-soft.webp`} alt={artAlt(`${A}/cloud-soft.webp`)} draggable={false} className="cloud-feather absolute inset-x-[-8%] bottom-[-6%] w-[116%] opacity-85" />
 
       {/* the figure */}
       <motion.div
@@ -47,25 +48,25 @@ export function EssayArt({ index, slug }: { index: number; tone?: Tone; slug?: s
         transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" decoding="async" src={`${A}/${fig}.webp`} alt="" draggable={false} className="jr-float h-full w-auto max-w-[78%] object-contain object-bottom drop-shadow-[0_22px_22px_rgba(0,0,0,0.6)]" style={{ "--fa": "6px" } as React.CSSProperties} />
+        <img loading="lazy" decoding="async" src={`${A}/${fig}.webp`} alt={artAlt(`${A}/${fig}.webp`)} draggable={false} className="jr-float h-full w-auto max-w-[78%] object-contain object-bottom drop-shadow-[0_22px_22px_rgba(0,0,0,0.6)]" style={{ "--fa": "6px" } as React.CSSProperties} />
       </motion.div>
 
       {/* the gilded tablet with the numeral */}
       <div className="absolute left-1/2 top-0 w-[40%] -translate-x-1/2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" decoding="async" src={`${A}/plaque.webp`} alt="" draggable={false} className="block w-full drop-shadow-[0_8px_10px_rgba(0,0,0,0.5)]" />
+        <img loading="lazy" decoding="async" src={`${A}/plaque.webp`} alt={artAlt(`${A}/plaque.webp`)} draggable={false} className="block w-full drop-shadow-[0_8px_10px_rgba(0,0,0,0.5)]" />
         <span className="display absolute inset-x-0 top-[58%] -translate-y-1/2 text-center text-[clamp(1.1rem,2.2vw,1.8rem)] leading-none text-[#5a0d16]">{NUMERALS[index % NUMERALS.length]}</span>
       </div>
 
       {/* lanterns on the right, swaying */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src={`${A}/lanterns.webp`} alt="" draggable={false} className={`absolute right-[1%] top-[-3%] w-[17%] origin-top ${reduce ? "" : "lantern-sway"}`} />
+      <img loading="lazy" decoding="async" src={`${A}/lanterns.webp`} alt={artAlt(`${A}/lanterns.webp`)} draggable={false} className={`absolute right-[1%] top-[-3%] w-[17%] origin-top ${reduce ? "" : "lantern-sway"}`} />
 
       {/* a cherub and flowers at the foot */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src={`${A}/cherub.webp`} alt="" draggable={false} className="jr-float absolute bottom-[1%] left-[1%] w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)]" style={{ "--fd": "-1.4s", "--fa": "4px" } as React.CSSProperties} />
+      <img loading="lazy" decoding="async" src={`${A}/cherub.webp`} alt={artAlt(`${A}/cherub.webp`)} draggable={false} className="jr-float absolute bottom-[1%] left-[1%] w-[18%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)]" style={{ "--fd": "-1.4s", "--fa": "4px" } as React.CSSProperties} />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" decoding="async" src={`${A}/flowers.webp`} alt="" draggable={false} className="jr-float absolute bottom-[1%] right-[2%] w-[13%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)]" style={{ "--fd": "-3s", "--fa": "4px" } as React.CSSProperties} />
+      <img loading="lazy" decoding="async" src={`${A}/flowers.webp`} alt={artAlt(`${A}/flowers.webp`)} draggable={false} className="jr-float absolute bottom-[1%] right-[2%] w-[13%] drop-shadow-[0_8px_8px_rgba(0,0,0,0.5)]" style={{ "--fd": "-3s", "--fa": "4px" } as React.CSSProperties} />
     </div>
   );
 }

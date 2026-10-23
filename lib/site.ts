@@ -48,6 +48,7 @@ export const cta = {
 
 export const nav = [
   { href: "/projects", label: "Projects" },
+  { href: "/services", label: "Services" },
   { href: "/sample", label: "Showcase" },
   { href: "/process", label: "Process" },
   { href: "/work", label: "Studies" },
@@ -58,6 +59,7 @@ export const nav = [
 export const footerNav = [
   { href: "/sample", label: "Showcase" },
   { href: "/projects", label: "Projects" },
+  { href: "/services", label: "Services" },
   { href: "/process", label: "Process" },
   { href: "/work", label: "Studies" },
   { href: "/journal", label: "Journal" },

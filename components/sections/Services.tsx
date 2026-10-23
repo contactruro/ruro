@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { GlobeSimple, LinkedinLogo, Newspaper, ProhibitInset } from "@phosphor-icons/react";
 import { MaskLines, Reveal } from "../ui/Reveal";
+import { artAlt } from "@/lib/altText";
 
 /* What we do, in four plain services and one plain refusal, set like four pillars: each has a sculpture on top, a
    name, one sentence, and what is in it. We do not do social media; the section says so. Dark royal blue with gold,
@@ -72,11 +73,11 @@ export function Services() {
             >
               <div aria-hidden className="relative h-56 overflow-hidden bg-[radial-gradient(ellipse_at_50%_20%,#2e4163,#17233b_75%)] md:h-64">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/art/myth/cloud-soft.webp" alt="" loading="lazy" draggable={false} className="cloud-feather absolute inset-x-[-12%] bottom-[-10%] w-[124%] opacity-45" />
+                <img src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} loading="lazy" draggable={false} className="cloud-feather absolute inset-x-[-12%] bottom-[-10%] w-[124%] opacity-45" />
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={`/art/myth/${s.art}.webp`}
-                  alt=""
+                  alt={artAlt(`/art/myth/${s.art}.webp`)}
                   loading="lazy"
                   draggable={false}
                   className="jr-float absolute inset-x-0 bottom-0 mx-auto h-[94%] w-auto max-w-[86%] object-contain object-bottom drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)] transition-transform duration-500 group-hover:scale-[1.04]"
