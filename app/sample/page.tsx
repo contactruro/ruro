@@ -9,7 +9,7 @@ import { FinalCta } from "@/components/sections/FinalCta";
 export const metadata: Metadata = pageMeta({
   title: "Showcase",
   description:
-    "Unofficial concept websites for Nikhil Kamath, Sam Altman, James Clear and Paul Graham: how their web presence looks today, a live redesign, and the reasoning behind it.",
+    "Unofficial concept sites for Nikhil Kamath, Sam Altman, James Clear and Paul Graham: how they look today, a live redesign and the reasoning behind it.",
   path: "/sample",
 });
 

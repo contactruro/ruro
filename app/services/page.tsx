@@ -10,7 +10,7 @@ import { services, WHO_SHORT } from "@/lib/services";
 export const metadata: Metadata = pageMeta({
   title: "Services",
   description:
-    "RURO designs, writes, builds and maintains personal websites for founders and executives: your website, a blog on your own site, personal branding, ongoing upkeep, and an online presence review.",
+    "Five services from one studio: your personal website, a blog on your own site, personal branding, ongoing upkeep and an online presence review.",
   path: "/services",
 });
 

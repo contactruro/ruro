@@ -19,7 +19,7 @@ function Listen() {
         <span key={d} aria-hidden className="ripple absolute left-1/2 top-[46%] size-40 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#e6c27a]/70" style={{ "--rd": `${d}s` } as React.CSSProperties} />
       ))}
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/bust-headphones.webp`} alt={artAlt(`${A}/bust-headphones.webp`)} loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[92%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
+      <img src={`${A}/bust-headphones.webp`} alt={artAlt(`${A}/bust-headphones.webp`)} aria-hidden loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[92%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
     </div>
   );
 }
@@ -29,7 +29,7 @@ function Record() {
   return (
     <div className="relative h-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/scholars-laptop.webp`} alt={artAlt(`${A}/scholars-laptop.webp`)} loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[98%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
+      <img src={`${A}/scholars-laptop.webp`} alt={artAlt(`${A}/scholars-laptop.webp`)} aria-hidden loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[98%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
     </div>
   );
 }
@@ -39,9 +39,9 @@ function Mood() {
   return (
     <div className="relative h-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/cloud-soft.webp`} alt={artAlt(`${A}/cloud-soft.webp`)} loading="lazy" draggable={false} className="absolute inset-x-[-8%] bottom-[-14%] w-[116%] opacity-70" />
+      <img src={`${A}/cloud-soft.webp`} alt={artAlt(`${A}/cloud-soft.webp`)} aria-hidden loading="lazy" draggable={false} className="absolute inset-x-[-8%] bottom-[-14%] w-[116%] opacity-70" />
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/angel-red.webp`} alt={artAlt(`${A}/angel-red.webp`)} loading="lazy" draggable={false} className="jr-float absolute inset-x-0 bottom-[4%] mx-auto h-[96%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" style={{ "--fa": "8px" } as React.CSSProperties} />
+      <img src={`${A}/angel-red.webp`} alt={artAlt(`${A}/angel-red.webp`)} aria-hidden loading="lazy" draggable={false} className="jr-float absolute inset-x-0 bottom-[4%] mx-auto h-[96%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" style={{ "--fa": "8px" } as React.CSSProperties} />
     </div>
   );
 }
@@ -51,7 +51,7 @@ function Build() {
   return (
     <div className="relative h-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/vr-statue.webp`} alt={artAlt(`${A}/vr-statue.webp`)} loading="lazy" draggable={false} className="jr-float absolute inset-x-0 bottom-0 mx-auto h-[98%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" style={{ "--fa": "5px" } as React.CSSProperties} />
+      <img src={`${A}/vr-statue.webp`} alt={artAlt(`${A}/vr-statue.webp`)} aria-hidden loading="lazy" draggable={false} className="jr-float absolute inset-x-0 bottom-0 mx-auto h-[98%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" style={{ "--fa": "5px" } as React.CSSProperties} />
     </div>
   );
 }
@@ -60,7 +60,7 @@ function Refine() {
   return (
     <div className="relative h-full">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={`${A}/sun-statue.webp`} alt={artAlt(`${A}/sun-statue.webp`)} loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[96%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
+      <img src={`${A}/sun-statue.webp`} alt={artAlt(`${A}/sun-statue.webp`)} aria-hidden loading="lazy" draggable={false} className="absolute inset-x-0 bottom-0 mx-auto h-[96%] w-auto object-contain drop-shadow-[0_18px_18px_rgba(0,0,0,0.5)]" />
     </div>
   );
 }

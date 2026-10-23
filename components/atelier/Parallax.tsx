@@ -126,7 +126,7 @@ export function Layer({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={src}
-          alt={artAlt(src)}
+          alt={artAlt(src)} aria-hidden
           loading="lazy"
           decoding="async"
           draggable={false}

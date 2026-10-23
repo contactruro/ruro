@@ -16,7 +16,7 @@ import { artAlt } from "@/lib/altText";
 export const metadata: Metadata = pageMeta({
   title: "The Journal",
   description:
-    "RURO designs and builds personal websites for founders and executives. The Journal covers reputation, digital identity and what people find when they search your name.",
+    "The RURO Journal: essays on reputation, digital identity and what people find when they search your name, from a personal website studio.",
   path: "/journal",
 });
 

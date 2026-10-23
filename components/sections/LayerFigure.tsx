@@ -25,7 +25,7 @@ export function LayerFigure({ index }: { index: number }) {
   return (
     <div className="relative flex h-full w-full flex-col [perspective:1400px]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img loading="lazy" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} draggable={false} className="cloud-feather pointer-events-none absolute inset-x-[-12%] bottom-10 w-[124%] opacity-60" />
+      <img loading="lazy" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} aria-hidden draggable={false} className="cloud-feather pointer-events-none absolute inset-x-[-12%] bottom-10 w-[124%] opacity-60" />
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
@@ -39,7 +39,7 @@ export function LayerFigure({ index }: { index: number }) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img loading="lazy" decoding="async"
               src={f.src}
-              alt={artAlt(f.src)}
+              alt={artAlt(f.src)} aria-hidden
               draggable={false}
               className="jr-float absolute inset-x-0 -top-[8%] mx-auto h-[108%] w-auto max-w-full object-contain object-bottom drop-shadow-[0_24px_24px_rgba(0,0,0,0.45)]"
               style={{ "--fa": "7px" } as React.CSSProperties}

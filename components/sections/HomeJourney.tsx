@@ -38,11 +38,11 @@ export function HomeJourney({ className = "", variant = "walk" }: { className?: 
   return (
     <div ref={ref} aria-hidden className={`relative isolate mx-auto aspect-[5/4] w-full max-w-[40rem] ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/art/myth/clouds-b.webp" alt={artAlt("/art/myth/clouds-b.webp")} loading="lazy" draggable={false} className="absolute inset-x-[-8%] bottom-[-6%] w-[116%] opacity-90" style={{ WebkitMaskImage: FEATHER, maskImage: FEATHER, WebkitMaskComposite: "source-in", maskComposite: "intersect" }} />
+      <img src="/art/myth/clouds-b.webp" alt={artAlt("/art/myth/clouds-b.webp")} aria-hidden loading="lazy" draggable={false} className="absolute inset-x-[-8%] bottom-[-6%] w-[116%] opacity-90" style={{ WebkitMaskImage: FEATHER, maskImage: FEATHER, WebkitMaskComposite: "source-in", maskComposite: "intersect" }} />
 
       <div className="absolute bottom-[8%] right-[2%] h-[86%] w-[48%]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={`/art/myth/${pair.goal}.webp`} alt={artAlt(`/art/myth/${pair.goal}.webp`)} loading="lazy" draggable={false} className="size-full object-contain object-bottom drop-shadow-[0_22px_20px_rgba(155,17,30,0.3)]" />
+        <img src={`/art/myth/${pair.goal}.webp`} alt={artAlt(`/art/myth/${pair.goal}.webp`)} aria-hidden loading="lazy" draggable={false} className="size-full object-contain object-bottom drop-shadow-[0_22px_20px_rgba(155,17,30,0.3)]" />
         <motion.span
           initial={false}
           animate={{ opacity: lit, y: lit ? 0 : 8 }}
@@ -60,7 +60,7 @@ export function HomeJourney({ className = "", variant = "walk" }: { className?: 
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={`/art/myth/${pair.mover}.webp`}
-          alt={artAlt(`/art/myth/${pair.mover}.webp`)}
+          alt={artAlt(`/art/myth/${pair.mover}.webp`)} aria-hidden
           loading="lazy"
           decoding="async"
           draggable={false}

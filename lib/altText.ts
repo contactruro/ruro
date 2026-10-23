@@ -1,11 +1,10 @@
 /* Alt text for the studio's own artwork (public/art/myth). One place, so the same picture is described the same way
    wherever it appears.
 
-   Every picture here has a plain description of what it shows. The exception is the backdrops: clouds, pillars, drapes
-   and the cut sheets. These are texture, not content, and are described with an empty string on purpose: an empty alt is the
-   correct way to mark an image as purely decorative, so a screen reader skips it instead of announcing "clouds" dozens of
-   times a page. (Most of the art sits inside a wrapper that is already hidden from screen readers; the alt text is for search
-   engines, for image search, and for anyone viewing with images turned off.) */
+   Every picture here has a plain description of what it shows, including the backdrops (clouds, pillars, drapes), so no image
+   is ever without alt text. All of this art is decoration around the content, so every <img> that uses artAlt() is also marked
+   aria-hidden: a screen reader skips it instead of announcing "clouds" dozens of times a page, while search engines, image
+   search and anyone viewing with images turned off still get the description. */
 
 const ART: Record<string, string> = {
   "adam-reach": "A painted hand reaching toward a falling male figure, after Michelangelo’s Creation of Adam",
@@ -88,22 +87,23 @@ const ART: Record<string, string> = {
   "wings-silver": "A pair of silver wings",
   "zeus-statue": "A stone statue of Zeus holding a lightning bolt",
 
-  // Backdrops and texture: decorative on purpose, so empty.
-  "angel-border": "",
-  angels: "",
-  "cloud-dark": "",
-  "cloud-soft": "",
-  "clouds-a": "",
-  "clouds-b": "",
-  drape: "",
-  "pillar-base": "",
-  "pillar-shaft": "",
-  "pillar-top": "",
+  // Backdrops and texture. They have short descriptions so search engines and image checkers see an alt on every
+  // image, and every <img> that uses artAlt() is also marked aria-hidden, so a screen reader skips the backdrops.
+  "angel-border": "A painted band of clouds with cherubs",
+  angels: "Painted clouds with cherubs",
+  "cloud-dark": "Dark painted clouds",
+  "cloud-soft": "Soft painted clouds",
+  "clouds-a": "Painted clouds",
+  "clouds-b": "Painted clouds",
+  drape: "A drape of cream satin",
+  "pillar-base": "The base of a marble pillar wound with roses",
+  "pillar-shaft": "The shaft of a marble pillar wound with roses",
+  "pillar-top": "The capital of a marble pillar wound with roses",
 };
 
-/** The description of a picture in /art/myth, found by its file name. Returns "" for backdrops, and for anything unknown. */
+/** The description of a picture in /art/myth, found by its file name. */
 export function artAlt(src: string): string {
   const name = src.split("?")[0].split("/").pop()?.replace(/\.(webp|png|jpe?g|avif)$/i, "") ?? "";
-  if (/^sheet-\d+$/.test(name)) return "";
-  return ART[name] ?? "";
+  if (/^sheet-\d+$/.test(name)) return "A sheet of cut-out artwork";
+  return ART[name] ?? "A painted decoration";
 }

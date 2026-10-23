@@ -55,14 +55,14 @@ export function StatueScene({
       {/* the far bank: a painted cloud behind the bust, its edges feathered away */}
       <motion.div style={reduce ? undefined : { y: farY }} className="pointer-events-none absolute inset-x-[-6%] bottom-[-2%] h-[78%]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} draggable={false} className="cloud-feather size-full object-cover object-bottom opacity-90" />
+        <img loading="lazy" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} aria-hidden draggable={false} className="cloud-feather size-full object-cover object-bottom opacity-90" />
       </motion.div>
 
       <motion.div style={reduce ? undefined : { y: statueY }} className="absolute inset-0">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img loading="lazy" decoding="async"
           src={src}
-          alt={artAlt(src)}
+          alt={artAlt(src)} aria-hidden
           className="absolute bottom-[6%] right-[4%] h-[92%] w-auto max-w-none select-none"
           style={{
             WebkitMaskImage: fade ? BASE_FADE : undefined,
@@ -77,7 +77,7 @@ export function StatueScene({
       {/* the near bank across its base, also feathered, so no edge of any picture shows */}
       <motion.div style={reduce ? undefined : { y: nearY }} className="pointer-events-none absolute inset-x-[-8%] bottom-[-10%] h-[40%]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img loading="lazy" decoding="async" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} draggable={false} className="cloud-feather size-full -scale-x-100 object-cover object-top" />
+        <img loading="lazy" decoding="async" src="/art/myth/cloud-soft.webp" alt={artAlt("/art/myth/cloud-soft.webp")} aria-hidden draggable={false} className="cloud-feather size-full -scale-x-100 object-cover object-top" />
       </motion.div>
     </div>
   );

@@ -48,7 +48,7 @@ function Side({ src, medals, side }: { src: string; medals: Medal[]; side: "l" |
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
-        alt={artAlt(src)}
+        alt={artAlt(src)} aria-hidden
         loading="lazy"
         draggable={false}
         className={`absolute bottom-0 h-[92%] w-auto max-w-[56%] object-contain object-bottom drop-shadow-[0_24px_24px_rgba(60,30,20,0.35)] ${side === "l" ? "left-[38%]" : "right-[38%]"}`}

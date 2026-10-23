@@ -18,7 +18,7 @@ export function FooterFigure({ src, index }: { src: string; index: number }) {
       transition={{ duration: 0.8, delay: index * 0.12, ease: [0.23, 1, 0.32, 1] }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt={artAlt(src)} loading="lazy" decoding="async" draggable={false} className="jr-float size-full object-contain object-bottom drop-shadow-[0_14px_14px_rgba(0,0,0,0.45)]" style={{ "--fd": `${index * -1.6}s`, "--fa": "5px" } as React.CSSProperties} />
+      <img src={src} alt={artAlt(src)} aria-hidden loading="lazy" decoding="async" draggable={false} className="jr-float size-full object-contain object-bottom drop-shadow-[0_14px_14px_rgba(0,0,0,0.45)]" style={{ "--fd": `${index * -1.6}s`, "--fa": "5px" } as React.CSSProperties} />
     </motion.span>
   );
 }

@@ -75,7 +75,7 @@ export function Audience({ n = "08" }: { n?: string }) {
                       style={{ transformOrigin: "50% 100%" }}
                     >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img loading="lazy" decoding="async" src={`/art/myth/${POP[a].src}.webp`} alt={artAlt(`/art/myth/${POP[a].src}.webp`)} draggable={false} className={`${POP[a].h} w-auto max-w-none drop-shadow-[0_18px_18px_rgba(60,20,25,0.35)]`} />
+                      <img loading="lazy" decoding="async" src={`/art/myth/${POP[a].src}.webp`} alt={artAlt(`/art/myth/${POP[a].src}.webp`)} aria-hidden draggable={false} className={`${POP[a].h} w-auto max-w-none drop-shadow-[0_18px_18px_rgba(60,20,25,0.35)]`} />
                     </motion.span>
                   )}
                 </AnimatePresence>

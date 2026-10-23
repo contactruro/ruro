@@ -15,7 +15,7 @@ export function Drape({ side = "right", className = "" }: { side?: "left" | "rig
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={SRC[side]}
-        alt={artAlt(SRC[side])}
+        alt={artAlt(SRC[side])} aria-hidden
         decoding="async"
         loading="lazy"
         className="h-full w-full object-cover"

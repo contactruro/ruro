@@ -49,7 +49,7 @@ export function HandsStage({ className = "" }: { className?: string }) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/art/myth/hands-touch.webp"
-          alt={artAlt("/art/myth/hands-touch.webp")}
+          alt={artAlt("/art/myth/hands-touch.webp")} aria-hidden
           loading="lazy"
           decoding="async"
           draggable={false}

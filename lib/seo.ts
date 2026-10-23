@@ -13,8 +13,25 @@ export const founder = {
   jobTitle: "Founder of RURO",
 };
 
+/* Search engines show about 155 characters of a description and ask for at least 70. This keeps every page inside that range:
+   a longer one is cut back to its last whole sentence (or word), and a very short one gets a closing line. */
+const DESC_MAX = 155;
+const DESC_MIN = 70;
+export function fitDescription(text: string): string {
+  let d = text.replace(/\s+/g, " ").trim();
+  if (d.length > DESC_MAX) {
+    const cut = d.slice(0, DESC_MAX);
+    const stop = Math.max(cut.lastIndexOf(". "), cut.lastIndexOf("? "), cut.lastIndexOf("! "), cut.endsWith(".") ? DESC_MAX - 1 : -1);
+    if (stop >= DESC_MIN - 1) d = cut.slice(0, stop + 1);
+    else d = cut.slice(0, cut.lastIndexOf(" ")).replace(/[,:;\s]+$/, "") + "…";
+  }
+  if (d.length < DESC_MIN) d = `${d} Read more from RURO.`;
+  return d;
+}
+
 /** Page metadata with its canonical address, share card and Twitter card kept consistent. */
-export function pageMeta(o: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean; image?: { url: string; width: number; height: number; alt: string } }): Metadata {
+export function pageMeta(raw: { title: string; description: string; path: string; type?: "website" | "article"; publishedTime?: string; noindex?: boolean; image?: { url: string; width: number; height: number; alt: string } }): Metadata {
+  const o = { ...raw, description: fitDescription(raw.description) };
   return {
     // Pages that exist for readers but should not compete in search results (the legal pages) say so here.
     ...(o.noindex ? { robots: { index: false, follow: true } } : {}),
