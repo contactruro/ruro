@@ -124,15 +124,13 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
 
     // Hold the bulk of the frames back until the page itself has loaded and the browser is idle, so they never fight
     // the page's own images for bandwidth.
+    // (It waits for the page to finish loading, but never longer than a second and a half: the film is what the visitor is here for,
+    // and they may start scrolling at once.)
     const whenQuiet = () =>
       new Promise<void>((res) => {
-        const idle = () => {
-          const w = window as unknown as { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => void };
-          if (w.requestIdleCallback) w.requestIdleCallback(() => res(), { timeout: 3000 });
-          else setTimeout(res, 1200);
-        };
-        if (document.readyState === "complete") idle();
-        else window.addEventListener("load", idle, { once: true });
+        if (document.readyState === "complete") return res();
+        const t = setTimeout(res, 1500);
+        window.addEventListener("load", () => { clearTimeout(t); res(); }, { once: true });
       });
 
     (async () => {
@@ -146,14 +144,19 @@ export function FrameCanvas({ progress, portrait, onFail, onReady }: { progress:
       coarse.push(FRAME_COUNT - 1);
       for (let j = 0; j < coarse.length && !dead; j += 4) await Promise.all(coarse.slice(j, j + 4).map((i) => load(i)));
       await whenQuiet();
-      while (!dead) {
-        const at = Math.round(progress.current * (FRAME_COUNT - 1));
-        const todo: number[] = [];
-        for (let i = 0; i < FRAME_COUNT; i += lean ? 2 : 1) if (!imgs[i]) todo.push(i);
-        if (todo.length === 0) break;
-        // Nearest first, with a lean toward frames ahead of the visitor (scrolling down is the usual direction).
-        todo.sort((x, y) => Math.abs(x - at - 2) - Math.abs(y - at - 2));
-        await Promise.all(todo.slice(0, 4).map((i) => load(i, true)));
+      // Then refine everywhere at once: every 12th frame, then every 6th, 3rd, and so on, so the gap between a drawn frame and the one the
+      // visitor is asking for shrinks across the whole film together, instead of the near part being perfect and the rest bare. Inside each
+      // pass the frames nearest to the visitor come first, with a lean toward the ones ahead (scrolling down is the usual direction).
+      const lanes = lean ? 4 : phone ? 6 : 8;
+      for (const stride of lean ? [12, 6, 2] : [12, 6, 3, 2, 1]) {
+        while (!dead) {
+          const at = Math.round(progress.current * (FRAME_COUNT - 1));
+          const todo: number[] = [];
+          for (let i = 0; i < FRAME_COUNT; i += stride) if (!imgs[i]) todo.push(i);
+          if (todo.length === 0) break;
+          todo.sort((x, y) => Math.abs(x - at - 2) - Math.abs(y - at - 2));
+          await Promise.all(todo.slice(0, lanes).map((i) => load(i, true)));
+        }
       }
     })();
 
