@@ -126,8 +126,33 @@ export function HeroGreek() {
       s.setProperty("--gold", gold.toFixed(3));
       s.setProperty("--lit", Math.min(1, Math.max(Math.max(0, 1 - day * 1.6), gold * 1.1)).toFixed(3));
       s.setProperty("--star", Math.max(0, 1 - day * 1.6).toFixed(3));
-      // the sun walks an arc from the left foot of the arch, peaking toward the upper right, to the right foot, across t = 0 .. 0.5; the moon across 0.5 .. 1
-      const arc = (u: number) => ({ x: 12 + 76 * Math.pow(u, 0.42), y: 104 - Math.sin(Math.PI * u) * 84 });
+      // the sun keeps to the edge of the arch, from the left foot up the left side, around the top corner and down the right, across t = 0 .. 0.5; the moon across 0.5 .. 1
+      // the path keeps to the edge of the arch: up the left side from below the foot, around the curve of the top corner, and down the
+      // right side, so the centre stays clear for the figure. Measured in widths of the window (the window is 4.1/3 tall).
+      const WH = 4.1 / 3;
+      const R = 0.33; // how far in from the edge the path runs, as the radius of the curve
+      const yC = 0.5; // where the round top begins, measured from the top
+      const yFoot = WH + 0.1; // just below the window
+      const Lv = yFoot - yC;
+      const Ls = Math.PI * R;
+      const Lt = 2 * Lv + Ls;
+      const arc = (u: number) => {
+        const d = Math.min(Math.max(u, 0), 1) * Lt;
+        let x: number;
+        let y: number;
+        if (d < Lv) {
+          x = 0.5 - R;
+          y = yFoot - d;
+        } else if (d < Lv + Ls) {
+          const a = (d - Lv) / R;
+          x = 0.5 - R * Math.cos(a);
+          y = yC - R * Math.sin(a);
+        } else {
+          x = 0.5 + R;
+          y = yC + (d - Lv - Ls);
+        }
+        return { x: x * 100, y: (y / WH) * 100 };
+      };
       const sp = arc(Math.min(Math.max(t / 0.5, 0), 1));
       const mp = arc(Math.min(Math.max((t - 0.5) / 0.5, 0), 1));
       s.setProperty("--sun-x", `${sp.x.toFixed(2)}%`);
@@ -365,7 +390,7 @@ export function HeroGreek() {
             <div aria-hidden className="absolute inset-0" style={{ opacity: "var(--sun-o)", background: "radial-gradient(circle at var(--sun-x) var(--sun-y), rgba(255,238,180,0.95) 0%, rgba(255,196,96,0.5) 18%, rgba(255,150,80,0.18) 38%, rgba(255,150,80,0) 58%)" }} />
             {/* the sun */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`${A}/gold-sun.webp`} alt="" className="absolute w-[40%] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_34px_rgba(255,200,90,0.95)]" style={{ left: "var(--sun-x)", top: "var(--sun-y)", opacity: "var(--sun-o)" }} />
+            <img src={`${A}/gold-sun.webp`} alt="" className="absolute w-[30%] -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_0_34px_rgba(255,200,90,0.95)]" style={{ left: "var(--sun-x)", top: "var(--sun-y)", opacity: "var(--sun-o)" }} />
             {/* the moon: the silver sun-and-crescent medallion, with a soft glow, and a few chrome sparkles near it */}
             <div className="absolute aspect-square w-[28%] -translate-x-1/2 -translate-y-1/2" style={{ left: "var(--moon-x)", top: "var(--moon-y)", opacity: "var(--moon-o)" }}>
               <div aria-hidden className="absolute inset-[-40%] rounded-full" style={{ background: "radial-gradient(circle, rgba(214,224,255,0.5) 0%, rgba(214,224,255,0.16) 40%, rgba(214,224,255,0) 70%)" }} />
