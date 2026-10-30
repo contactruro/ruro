@@ -30,7 +30,12 @@ export function Nav() {
   });
   // Pages whose header is dark mark it with data-nav-dark; the nav then uses light text
   // until it takes its paper ground on scroll.
-  useEffect(() => setDarkHeader(!!document.querySelector("[data-nav-dark]")), [pathname]);
+  useEffect(() => {
+    const check = () => setDarkHeader(!!document.querySelector("[data-nav-dark]"));
+    check();
+    window.addEventListener("ruro:hero", check);
+    return () => window.removeEventListener("ruro:hero", check);
+  }, [pathname]);
   const onDark = darkHeader && over;
 
   useEffect(() => setOpen(false), [pathname]);

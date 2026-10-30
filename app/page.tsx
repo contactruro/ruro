@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { pageMeta } from "@/lib/seo";
-import { Hero } from "@/components/sections/Hero";
-import { StoryScrub } from "@/components/sections/StoryScrub";
+import { HeroGreek } from "@/components/sections/HeroGreek";
 import { HomeIntro } from "@/components/sections/HomeIntro";
 const Statement = dynamic(() => import("@/components/sections/Statement").then((m) => m.Statement));
 const Services = dynamic(() => import("@/components/sections/Services").then((m) => m.Services));
@@ -30,8 +29,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <Hero />
-      <StoryScrub />
+      <HeroGreek />
       <HomeIntro />
       <Statement />
       <Services />

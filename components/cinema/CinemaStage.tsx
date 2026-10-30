@@ -13,6 +13,10 @@ import { cinemaRange, stableVh } from "./viewport";
    one). Without it, a canvas draws a stand-in: slow pools of colour on white, specks drifting, and loose pages
    that start scattered and gather as you scroll, which is RURO's story. Reduced motion draws a single frame. */
 
+/** The home page opens with the Greek hero (an ivory page), so the scrubbed film behind it is off. Set to true to bring the
+    film opening back; the film frames, the story captions and the film hero are all still in the project. */
+export const FILM_ON_HOME = false;
+
 /** Viewport-heights of scroll over which the home frames play (the hero plus the story beats). */
 export const CINEMA_RANGE = 3.2;
 
@@ -24,7 +28,7 @@ function announce() {
 
 export function CinemaStage() {
   const path = usePathname();
-  const home = path === "/";
+  const home = FILM_ON_HOME && path === "/";
   const progress = useRef(0);
   const veil = useRef<HTMLDivElement>(null);
   const layer = useRef<HTMLDivElement>(null);
@@ -79,7 +83,7 @@ export function CinemaStage() {
   }, [home, useFrames]);
 
   return (
-    <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#f7f3eb]">
+    <div aria-hidden data-cinema className="pointer-events-none fixed inset-0 -z-10 overflow-hidden bg-[#f7f3eb]">
       <div ref={layer} className="absolute inset-[-3%]">
         {useFrames ? <FrameCanvas key={portrait ? "p" : "l"} progress={progress} portrait={portrait} onFail={() => { setFrames("failed"); announce(); }} onReady={() => { setFrames("ok"); announce(); }} /> : null}
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { FILM_ON_HOME } from "../cinema/CinemaStage";
 
 /* The opening screen. A full-screen image (public/loader/ruro.jpg, which carries the RURO.IN wordmark), a serif
    percentage counting up in the bottom-right corner and a thin progress bar along the foot.
@@ -35,7 +36,7 @@ export function Preloader() {
     document.body.classList.add("is-preloading");
     const dur = reduce ? 500 : 1300;
     // The first screen is ready when the film's first frame has drawn (home only), or at once on other pages.
-    const filmWanted = window.location.pathname === "/";
+    const filmWanted = FILM_ON_HOME && window.location.pathname === "/";
     let filmReady = !filmWanted || !!(window as unknown as { __ruroFilm?: boolean }).__ruroFilm;
     const onFilm = () => {
       filmReady = true;
